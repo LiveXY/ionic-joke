@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "name": "com.livexy.core",
+    "cordova_name": "AppCore",
+    "description": "Ionic AppCore Plugin",
+    "license": "Apache 2.0",
+    "repo": "",
+    "issue": "",
+    "keywords": [
+        "Ionic",
+        "AppCore"
+    ],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "engines": []
+}

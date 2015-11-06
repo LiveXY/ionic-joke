@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.livexy.core"
+    version="1.0.0">
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <name>AppCore</name>
+
+    <description>AppCore plugin for Cordova/PhoneGap</description>
+
+    <author>livexy</author>
+
+    <keywords>AppCore</keywords>
+
+    <license>MIT</license>
+
+    <js-module src="www/core.js" name="AppCore">
+        <clobbers target="AppCore" />
+    </js-module>
+
+    <!-- iOS -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="AppCore">
+                <param name="ios-package" value="CDVAppCore" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+        </config-file>
+        <config-file target="*-Info.plist" parent="UIRequiresFullScreen">
+            <true/>
+        </config-file>
+
+        <header-file src="src/ios/CDVAppCore.h" />
+        <source-file src="src/ios/CDVAppCore.m" />
+    </platform>
+
+    <!-- Android -->
+    <platform name="android">
+        <source-file src="src/android/AppCore.java" target-dir="src/com/livexy/core" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AppCore">
+                <param name="android-package" value="com.livexy.core.AppCore" />
+            </feature>
+        </config-file>
+    </platform>
+
+
+</plugin>
