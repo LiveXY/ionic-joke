@@ -64,6 +64,7 @@
 		0FD0882E43AE4F1A88F9FD24 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6C5238B8F4E7EAFBE7A2B /* CDVSplashScreen.m */; };
 		64845CD59FD3450C969C47DD /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C3507A3DB6644229819CDE55 /* CDVViewController+SplashScreen.m */; };
 		77A8CD0A33954741B739A6AB /* CDVClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = EC20C40ED5274109B588A959 /* CDVClipboard.m */; };
+		029FA4F16434468D894242BE /* CDVAppCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 098143E56A504131BF1F5032 /* CDVAppCore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +178,8 @@
 		C8E80B4E61A640E499C9E185 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		EC20C40ED5274109B588A959 /* CDVClipboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVClipboard.m"; path = "com.verso.cordova.clipboard/CDVClipboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		4C79B71C1DE74EB3B9AA02DC /* CDVClipboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVClipboard.h"; path = "com.verso.cordova.clipboard/CDVClipboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		098143E56A504131BF1F5032 /* CDVAppCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVAppCore.m"; path = "com.livexy.core/CDVAppCore.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		410F0CE5D91943A3AD826661 /* CDVAppCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVAppCore.h"; path = "com.livexy.core/CDVAppCore.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,8 @@
 				C8E80B4E61A640E499C9E185 /* CDVViewController+SplashScreen.h */,
 				EC20C40ED5274109B588A959 /* CDVClipboard.m */,
 				4C79B71C1DE74EB3B9AA02DC /* CDVClipboard.h */,
+				098143E56A504131BF1F5032 /* CDVAppCore.m */,
+				410F0CE5D91943A3AD826661 /* CDVAppCore.h */,
 			);
 			name = Plugins;
 			path = "猪猪笑话/Plugins";
@@ -532,6 +537,7 @@
 				0FD0882E43AE4F1A88F9FD24 /* CDVSplashScreen.m in Sources */,
 				64845CD59FD3450C969C47DD /* CDVViewController+SplashScreen.m in Sources */,
 				77A8CD0A33954741B739A6AB /* CDVClipboard.m in Sources */,
+				029FA4F16434468D894242BE /* CDVAppCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

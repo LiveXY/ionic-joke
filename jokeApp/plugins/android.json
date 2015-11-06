@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"Clipboard\"><param name=\"android-package\" value=\"com.verso.cordova.clipboard.Clipboard\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppCore\"><param name=\"android-package\" value=\"com.livexy.core.AppCore\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -106,6 +110,9 @@
         },
         "com.verso.cordova.clipboard": {
             "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "com.livexy.core": {
+            "PACKAGE_NAME": "com.livexy.joke"
         }
     },
     "dependent_plugins": {}

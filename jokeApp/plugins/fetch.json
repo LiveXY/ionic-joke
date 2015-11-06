@@ -95,5 +95,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.livexy.core": {
+        "source": {
+            "type": "local",
+            "path": "../plugins_code/com.livexy.core"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

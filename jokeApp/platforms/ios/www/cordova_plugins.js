@@ -237,6 +237,13 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.clipboard"
         ]
+    },
+    {
+        "file": "plugins/com.livexy.core/www/core.js",
+        "id": "com.livexy.core.AppCore",
+        "clobbers": [
+            "AppCore"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -252,7 +259,8 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.1",
     "cordova-plugin-device": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",
-    "com.verso.cordova.clipboard": "0.1.0"
+    "com.verso.cordova.clipboard": "0.1.0",
+    "com.livexy.core": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

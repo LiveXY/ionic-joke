@@ -95,11 +95,31 @@
                         {
                             "xml": "<feature name=\"Clipboard\"><param name=\"ios-package\" value=\"CDVClipboard\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppCore\"><param name=\"ios-package\" value=\"CDVAppCore\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
                         {
                             "xml": "<feature name=\"Zip\"><param name=\"ios-package\" value=\"ZipPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSAppTransportSecurity": [
+                        {
+                            "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
+                            "count": 1
+                        }
+                    ],
+                    "UIRequiresFullScreen": [
+                        {
+                            "xml": "<true />",
                             "count": 1
                         }
                     ]
@@ -140,6 +160,9 @@
         },
         "com.verso.cordova.clipboard": {
             "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "com.livexy.core": {
+            "PACKAGE_NAME": "com.livexy.joke"
         }
     },
     "dependent_plugins": {}

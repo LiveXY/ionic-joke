@@ -69,6 +69,8 @@ sudo cordova plugin add org.apache.cordova.file-transfer
 sudo cordova plugin add cordova-plugin-zip
 sudo cordova plugin add hu.dpal.phonegap.plugins.uniquedeviceid
 sudo cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
+sudo cordova plugin add ../plugins_code/com.livexy.core
+
 ```
 ====================================================
 生成icon/splash:
