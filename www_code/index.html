@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="jokeApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>猪猪笑话</title>
+	<meta name="keyword" content="猪猪笑话,搞笑段子,短信,图片,无广告">
+	<meta name="description" content="猪猪笑话－搞笑段子、短信、图片、无广告">
+	<meta name="format-detection" content="telephone=no,email=no"/>
+	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+	<link href="css/ionic.app.css" rel="stylesheet">
+</head>
+<body class="joke {{$root.skin}}">
+	<ion-nav-bar class="no-animation bar-{{$root.skin}}" animation="no-animation"></ion-nav-bar>
+	<ion-nav-view class="no-animation" animation="no-animation"></ion-nav-view>
+	<script src="js/extend.js"></script>
+	<script src="lib/ionic/js/ionic.bundle.min.js"></script>
+	<script src="lib/angular-ios9-uiwebview.patch.js"></script>
+	<script src="cordova.js"></script>
+	<script src="cordova_plugins.js"></script>
+	<script src="lib/ng-cordova.min.js"></script>
+	<script src="js/ionic.app.js"></script>
+	<script src="js/filters.js"></script>
+	<script src="js/factorys/msg.js"></script>
+	<script src="js/factorys/data.js"></script>
+	<script src="js/factorys/util.js"></script>
+	<script src="js/factorys/init.js"></script>
+	<script src="js/factorys/share.js"></script>
+	<script src="js/factorys/update.js"></script>
+	<script src="js/factorys/jpush.js"></script>
+	<script src="js/services/joke.js"></script>
+	<script src="js/services/meitu.js"></script>
+	<script src="js/services/user.js"></script>
+	<script src="js/directives/directives.js"></script>
+	<script src="js/templates/joke.js"></script>
+	<script src="js/templates/meitu.js"></script>
+	<script src="js/templates/setting.js"></script>
+	<script src="js/controllers/joke.js"></script>
+	<script src="js/controllers/meitu.js"></script>
+	<script src="js/controllers/setting.js"></script>
+</body>
+</html>

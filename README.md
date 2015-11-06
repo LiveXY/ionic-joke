@@ -1,5 +1,5 @@
 # ionic-joke
-猪猪笑话－搞笑段子、短信、图片
+猪猪笑话－搞笑段子、短信、图片、无广告
 
 ====================================================
 先下载安装nodejs:
@@ -69,4 +69,14 @@ sudo cordova plugin add org.apache.cordova.file-transfer
 sudo cordova plugin add cordova-plugin-zip
 sudo cordova plugin add hu.dpal.phonegap.plugins.uniquedeviceid
 sudo cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
+```
+====================================================
+生成icon/splash:
+```
+./resources.sh
+```
+====================================================
+生成www:
+```
+./www.sh
 ```

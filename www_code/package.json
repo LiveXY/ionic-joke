@@ -1,0 +1,19 @@
+{
+  "name": "猪猪笑话",
+  "main": "index.html",
+  "description": "猪猪笑话",
+  "version": "1.0.0",
+  "window": {
+    "title": "猪猪笑话",
+    "toolbar": false,
+    "show": true,
+    "position": "center",
+    "resizable": false,
+    "frame": true,
+    "width": 320,
+    "height": 568
+  },
+  "webkit": {
+    "plugin": false
+  }
+}

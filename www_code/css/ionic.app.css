@@ -1,0 +1,82 @@
+* { padding:0px; margin:0px; font-family:"Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体"; }
+a { text-decoration: none }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix{zoom:1;}
+
+.radius25,.button-bar>.button.radius25,.popup-buttons .button.radius25 { border-radius: 25px; -webkit-border-radius:25px; -moz-border-radius: 25px; }
+button, input, label, select, textarea { font-size:16px; }
+
+.joke ion-header-bar.header-transparent,
+.header-transparent { background-image:none; }
+.header-transparent .button-clear.button-clear { color:#fff; }
+.header-transparent .title { display:none; color:#fff; }
+.header-transparent.header-show { -webkit-animation: showHeader 1s; background-color:#44ABB2; pointer-events:all; }
+.header-transparent.header-show .title { display:block; }
+@-webkit-keyframes showHeader {
+	from { background-color:transparent; }
+	to   { background-color:#44ABB2; }
+}
+.header-transparent.header-hide { -webkit-animation: hideHeader 1s; background-color:transparent;pointer-events:none; }
+.header-transparent.header-hide .title { display:none; }
+.header-transparent.header-hide button { pointer-events:all; }
+@-webkit-keyframes hideHeader {
+	from { background-color:#44ABB2; }
+	to   { background-color:transparent; }
+}
+
+.imageloaded {opacity: 0;}
+.imageloaded-fadein { opacity: 1; -webkit-animation: fadein 1s; animation: fadein 1s; }
+@keyframes fadein {from { opacity: 0; } to { opacity: 1; }}
+@-webkit-keyframes fadein { from { opacity: 0; } to { opacity: 1; }}
+
+.likeAnimated,.test-slide-box img.likeAnimated { display: block; width:40px; }
+.zoomIn {-webkit-animation-name: zoomIn;animation-name: zoomIn;-webkit-animation-duration:0.3s; animation-duration:0.3s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.rotateLeft {-webkit-animation-name: rotateLeft;animation-name: rotateLeft;-webkit-animation-duration:0.1s; animation-duration:0.1s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.fadeOutUpLeft {-webkit-animation-name: fadeOutUpLeft;animation-name: fadeOutUpLeft;-webkit-animation-duration:8s; animation-duration:8s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.rotateRight {-webkit-animation-name: rotateRight;animation-name: rotateRight;-webkit-animation-duration:0.1s; animation-duration:0.1s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.fadeOutUpRight {-webkit-animation-name: fadeOutUpRight;animation-name: fadeOutUpRight;-webkit-animation-duration:8s; animation-duration:8s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
+@-webkit-keyframes zoomIn {from {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}to {opacity: 1;}}
+@keyframes zoomIn {from {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}to {opacity: 1;}}
+@-webkit-keyframes rotateLeft {from {}to {-webkit-transform: rotate3d(0, 0, 1, -20deg);transform: rotate3d(0, 0, 1, -20deg);}}
+@keyframes rotateLeft {from {}to {-webkit-transform: rotate3d(0, 0, 1, -20deg);transform: rotate3d(0, 0, 1, -20deg);}}
+@-webkit-keyframes fadeOutUpLeft { from {-webkit-transform: rotate3d(0, 0, 1, -20deg);transform: rotate3d(0, 0, 1, -20deg); } to { opacity: 0; -webkit-transform: translate3d(0, -1500px, 0); transform: translate3d(0, -1500px, 0); } }
+@keyframes fadeOutUpLeft {from {-webkit-transform: rotate3d(0, 0, 1, -20deg);transform: rotate3d(0, 0, 1, -20deg); } to {opacity: 0;-webkit-transform: translate3d(0, -1500px, 0);transform: translate3d(0, -1500px, 0);}}
+@-webkit-keyframes rotateRight {from {}to {-webkit-transform: rotate3d(0, 0, 1, 20deg);transform: rotate3d(0, 0, 1, 20deg);}}
+@keyframes rotateRight {from {}to {-webkit-transform: rotate3d(0, 0, 1, 20deg);transform: rotate3d(0, 0, 1, 20deg);}}
+@-webkit-keyframes fadeOutUpRight { from {-webkit-transform: rotate3d(0, 0, 1, 20deg);transform: rotate3d(0, 0, 1, 20deg); } to { opacity: 0; -webkit-transform: translate3d(0, -1500px, 0); transform: translate3d(0, -1500px, 0); } }
+@keyframes fadeOutUpRight {from {-webkit-transform: rotate3d(0, 0, 1, 20deg);transform: rotate3d(0, 0, 1, 20deg); } to {opacity: 0;-webkit-transform: translate3d(0, -1500px, 0);transform: translate3d(0, -1500px, 0);}}
+
+.platform-android .action-sheet-backdrop { -webkit-transition: background-color 150ms ease-in-out; transition: background-color 150ms ease-in-out; position: fixed; top: 0; left: 0; z-index: 11; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0); }
+.platform-android .action-sheet-backdrop.active { background-color: rgba(0, 0, 0, 0.4); }
+.platform-android .action-sheet-wrapper { -webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms; transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms; position: absolute; bottom: 0; left: 0; right: 0; width: 100%; max-width: 500px; margin: auto; }
+.platform-android .action-sheet-up { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.platform-android .action-sheet { margin-left: 8px; margin-right: 8px; width: auto; z-index: 11; overflow: hidden; }
+.platform-android .action-sheet .button { display: block; padding: 1px; width: 100%; border-radius: 0; border-color: #d1d3d6; background-color: transparent; color: #007aff; font-size: 21px; }
+.platform-android .action-sheet .button:hover { color: #007aff; }
+.platform-android .action-sheet .button.destructive { color: #ff3b30; }
+.platform-android .action-sheet .button.destructive:hover { color: #ff3b30; }
+.platform-android .action-sheet .button.active, .platform-android .action-sheet .button.activated { box-shadow: none; border-color: #d1d3d6; color: #007aff; background: #e4e5e7; }
+.platform-android .action-sheet-has-icons .icon { position: absolute; left: 16px; }
+.platform-android .action-sheet-title { padding: 16px; color: #8f8f8f; text-align: center; font-size: 13px; }
+.platform-android .action-sheet-group { margin-bottom: 8px; border-radius: 4px; background-color: #fff; overflow: hidden; }
+.platform-android .action-sheet-group .button { border-width: 1px 0px 0px 0px; }
+.platform-android .action-sheet-group .button:first-child:last-child { border-width: 0; }
+.platform-android .action-sheet-options { background: #f1f2f3; }
+.platform-android .action-sheet-cancel .button { font-weight: 500; }
+.platform-android .action-sheet-open { pointer-events: none; }
+.platform-android .action-sheet-open.modal-open .modal { pointer-events: none; }
+.platform-android .action-sheet-open .action-sheet-backdrop { pointer-events: auto; }
+.platform-android .action-sheet .action-sheet-title, .platform-android .action-sheet .button { text-align: center; }
+.platform-android .action-sheet-cancel { display: block; }
+
+.action-sheet,.platform-android .action-sheet { margin-left:0; margin-right:0; }
+.action-sheet-group,.platform-android .action-sheet-group { margin-bottom:0; border-radius:0; }
+.action-sheet-options,.platform-android .action-sheet-options { background: rgba(255,255,255,0.92); }
+
+
+/*iPhone 6+ Portrait*/
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
+	button, input, label, select, textarea,.button,.item,.nodata { font-size:18px; }
+	.bar .title { font-size:19px; }
+	.item h2 { font-size:18px; }
+}
