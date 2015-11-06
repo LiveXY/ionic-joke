@@ -1,0 +1,26 @@
+{
+    "version": "1.2.0",
+    "name": "hu.dpal.phonegap.plugins.uniquedeviceid",
+    "cordova_name": "UniqueDeviceID",
+    "description": "\n        PhoneGap / Cordova unique device id (UUID) plugin for Android, iOS and Windows Phone 8. Remains the same after app uninstall.\n    ",
+    "license": "MIT",
+    "keywords": [
+        "phonegap",
+        "cordova",
+        "android",
+        "ios",
+        "wp",
+        "Windows",
+        "phone",
+        "device",
+        "id",
+        "uuid",
+        "unique"
+    ],
+    "platforms": [
+        "android",
+        "ios",
+        "wp8"
+    ],
+    "engines": []
+}
