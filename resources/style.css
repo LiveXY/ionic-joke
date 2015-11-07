@@ -1,7 +1,7 @@
 html,body { padding:0; margin:0;font-family:"Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体"; }
 html.icon, html.icon body { width:32em; height:32em; }
 html.splash, html.splash body { width:69em; height:69em; background-color: #ef473a; }
-.splash-box { padding-top: 400px; text-align: center; color:#fff; font-size:22px; }
+.splash-box { padding-top: 400px; text-align: center; color:#fff; font-size:25px; }
 .splash-box .pig { margin:0 auto; margin-bottom:20px; }
 .pig {
 	position:relative;

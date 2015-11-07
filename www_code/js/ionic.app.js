@@ -6,9 +6,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 .constant('config', {
 	vid: 100, vname: 'v1.0.0', bundleid: 'com.livexy.joke',
 	refresh: {},
-	resourcesUrl: 'http://192.168.1.222:8021',
-	api: 'http://192.168.1.222:8021/app/{0}?callback=JSON_CALLBACK',
-	//resourcesUrl: 'http://joke.relaxlife.net',
+	api: 'http://192.168.1.104:8021/app/{0}?callback=JSON_CALLBACK',
 	//api: 'http://joke.relaxlife.net/app/{0}?callback=JSON_CALLBACK',
 	apiTimeout: 30 * 1000
 })
