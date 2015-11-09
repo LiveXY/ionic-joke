@@ -6,8 +6,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 .constant('config', {
 	vid: 100, vname: 'v1.0.0', bundleid: 'com.livexy.joke',
 	refresh: {},
-	api: 'http://192.168.1.222:8021/app/{0}?callback=JSON_CALLBACK',
-	//api: 'http://joke.relaxlife.net/app/{0}?callback=JSON_CALLBACK',
+	api: 'http://joke.relaxlife.net/app/{0}?callback=JSON_CALLBACK',
 	apiTimeout: 30 * 1000
 })
 //全局配置
@@ -131,14 +130,11 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
 		if(window.StatusBar) StatusBar.styleLightContent();
-
-		var uuid = init.uuid();
-		if (!uuid) return auth();
-
-		uuid.then(function(uuid){
-			auth(uuid);
-		}, function(err){
-			return msg.text('初始化设备失败！');
+		init.auth().then(function(u) {
+			if (navigator.splashscreen) $timeout(function(){ navigator.splashscreen.hide(); }, 1000);
+			if (u && u.update==1 && navigator.connection) { $location.path('/version'); return false; }
+			init.setJPushTagsAndAlias();
+			$location.path('/tabs/joke');
 		});
 	});
 }]);

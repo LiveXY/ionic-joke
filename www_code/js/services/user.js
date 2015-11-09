@@ -38,11 +38,11 @@ app.factory('UserService', ['$http', 'config', 'data', function($http, config, d
 			});
 		},
 		//登录并注册
-		auth: function(uuid) {
+		auth: function() {
 			var pf = getPlatform();
 			var user = data.getObject('user');
 
-			var uuid = user && user.username ? user.username : (uuid ? uuid : 'test1');
+			var uuid = user && user.username ? user.username : (window['device'] && device.uuid ? device.uuid : 'test1');
 			var network = navigator.connection && navigator.connection.type ? navigator.connection.type : 'none';
 			console.log(user.uid, uuid, network, pf, config.bundleid, config.vid, config.vname);
 			return $http({

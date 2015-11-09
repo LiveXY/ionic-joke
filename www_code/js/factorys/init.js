@@ -39,16 +39,6 @@ app.factory('init', ['$http', '$location', '$ionicHistory', '$rootScope', '$ioni
 			$ionicHistory.clearHistory();
 			data.checkApi(UserService.logout(), function(res){  });
 		},
-		uuid: function() {
-			if (!window.plugins || !window.plugins.uniqueDeviceID) return false;
-			var d = $q.defer();
-			window.plugins.uniqueDeviceID.get(function (uuid) {
-                d.resolve(uuid);
-            }, function (err) {
-                d.reject(err);
-            });
-            return d.promise;
-		},
 		//启动授权
 		auth: function(uuid) {
 			var d = $q.defer();

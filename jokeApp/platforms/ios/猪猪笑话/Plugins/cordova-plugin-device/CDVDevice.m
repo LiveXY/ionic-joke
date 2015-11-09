@@ -84,7 +84,17 @@
     [devProps setObject:[device modelVersion] forKey:@"model"];
     [devProps setObject:@"iOS" forKey:@"platform"];
     [devProps setObject:[device systemVersion] forKey:@"version"];
-    [devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
+    
+    //不是设备唯一id[devProps setObject:[self uniqueAppInstanceIdentifier:device] forKey:@"uuid"];
+    DeviceInfoHelper *helper = [DeviceInfoHelper currentDeviceInfo];
+    //手机唯一ID
+    NSString *deviceid = [helper geteDeviceInfo:eDeviceInfo_DeviceId];
+    [devProps setObject:deviceid forKey:@"uuid"];
+    
+    //手机型号
+    NSString *uname = [helper geteDeviceInfo:eDeviceInfo_PhoneModel];
+    [devProps setObject:uname forKey:@"uname"];
+    
     [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];

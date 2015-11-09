@@ -190,13 +190,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/hu.dpal.phonegap.plugins.UniqueDeviceID/www/uniqueid.js",
-        "id": "hu.dpal.phonegap.plugins.UniqueDeviceID.UniqueDeviceID",
-        "merges": [
-            "window.plugins.uniqueDeviceID"
-        ]
-    },
-    {
         "file": "plugins/com.ionic.keyboard/www/keyboard.js",
         "id": "com.ionic.keyboard.keyboard",
         "clobbers": [
@@ -215,13 +208,6 @@ module.exports = [
         "id": "cordova-plugin-console.console",
         "clobbers": [
             "console"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "id": "cordova-plugin-device.device",
-        "clobbers": [
-            "device"
         ]
     },
     {
@@ -244,6 +230,20 @@ module.exports = [
         "clobbers": [
             "AppCore"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/cn.jpush.phonegap.JPushPlugin/www/JPushPlugin.js",
+        "id": "cn.jpush.phonegap.JPushPlugin.JPushPlugin",
+        "clobbers": [
+            "window.plugins.jPushPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -254,13 +254,13 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.5.0",
     "cordova-plugin-zip": "3.0.0",
     "cordova-plugin-statusbar": "1.0.1",
-    "hu.dpal.phonegap.plugins.UniqueDeviceID": "1.2.0",
     "com.ionic.keyboard": "1.0.4",
     "cordova-plugin-console": "1.0.1",
-    "cordova-plugin-device": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",
     "com.verso.cordova.clipboard": "0.1.0",
-    "com.livexy.core": "1.0.0"
+    "com.livexy.core": "1.0.0",
+    "cordova-plugin-device": "1.0.1",
+    "cn.jpush.phonegap.JPushPlugin": "2.0.2"
 }
 // BOTTOM OF METADATA
 });

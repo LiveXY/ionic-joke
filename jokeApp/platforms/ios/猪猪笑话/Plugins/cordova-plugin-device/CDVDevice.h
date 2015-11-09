@@ -19,6 +19,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Cordova/CDVPlugin.h>
+#import "DeviceInfoHelper.h"
 
 @interface CDVDevice : CDVPlugin
 {}

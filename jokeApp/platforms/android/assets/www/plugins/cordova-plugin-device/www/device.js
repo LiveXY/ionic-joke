@@ -39,6 +39,7 @@ function Device() {
     this.platform = null;
     this.version = null;
     this.uuid = null;
+    this.uname = null;
     this.cordova = null;
     this.model = null;
     this.manufacturer = null;
@@ -54,6 +55,7 @@ function Device() {
             me.platform = info.platform;
             me.version = info.version;
             me.uuid = info.uuid;
+            me.uname = info.uname
             me.cordova = buildLabel;
             me.model = info.model;
             me.manufacturer = info.manufacturer || 'unknown';

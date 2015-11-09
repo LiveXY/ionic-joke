@@ -47,14 +47,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "hu.dpal.phonegap.plugins.UniqueDeviceID": {
-        "source": {
-            "type": "registry",
-            "id": "hu.dpal.phonegap.plugins.uniquedeviceid"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "com.ionic.keyboard": {
         "source": {
             "type": "registry",
@@ -67,14 +59,6 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-console"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device"
         },
         "is_top_level": true,
         "variables": {}
@@ -100,6 +84,22 @@
         "source": {
             "type": "local",
             "path": "../plugins_code/com.livexy.core"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "local",
+            "path": "../plugins_code/cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cn.jpush.phonegap.JPushPlugin": {
+        "source": {
+            "type": "local",
+            "path": "../plugins_code/jpush-phonegap-plugin"
         },
         "is_top_level": true,
         "variables": {}
