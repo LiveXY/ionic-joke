@@ -42,6 +42,8 @@ app.factory('data', ['$cordovaNetwork', '$window', 'msg', 'util', 'config', func
 			}).error(function(err, status){
 				console.log('error--------------------------------------------------------');
 				console.log('status:', status);
+				console.log(p.$$state.value.config.url);
+				console.log(p.$$state.value.config.params);
 				console.log(err);
 				if (error) error(err, status);
 				var flag = false, url = p.$$state.value.config.url;

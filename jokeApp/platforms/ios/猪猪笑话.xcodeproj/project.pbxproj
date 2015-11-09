@@ -180,7 +180,25 @@
 		4C79B71C1DE74EB3B9AA02DC /* CDVClipboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVClipboard.h"; path = "com.verso.cordova.clipboard/CDVClipboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		098143E56A504131BF1F5032 /* CDVAppCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVAppCore.m"; path = "com.livexy.core/CDVAppCore.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		410F0CE5D91943A3AD826661 /* CDVAppCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVAppCore.h"; path = "com.livexy.core/CDVAppCore.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		3CADE2381B95522F000132BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3CADE23A1B95523B000132BF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		64AD6F961B958FEF00E5560C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXVariantGroup section */
+		3CADE2391B95522F000132BF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CADE2381B95522F000132BF /* en */,
+				3CADE23A1B95523B000132BF /* zh-Hans */,
+				64AD6F961B958FEF00E5560C /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+
 
 /* Begin PBXFrameworksBuildPhase section */
 		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
@@ -427,6 +445,8 @@
 				es,
 				de,
 				se,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";

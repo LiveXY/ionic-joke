@@ -1,11 +1,11 @@
 #!/bin/sh
 
-currPath=$(pwd)
-sourceFile="$currPath/platforms/ios/心情温度计.xcodeproj/project.pbxproj"
+currPath="$(pwd)"
+sourceFile="$currPath/jokeApp/platforms/ios/猪猪笑话.xcodeproj/project.pbxproj"
 
-cp -R "$currPath/plugins_code/multi-lang/en.lproj" "$currPath/platforms/ios/"
-cp -R "$currPath/plugins_code/multi-lang/zh-Hans.lproj" "$currPath/platforms/ios/"
-cp -R "$currPath/plugins_code/multi-lang/zh-Hant.lproj" "$currPath/platforms/ios/"
+cp -R "$currPath/plugins_code/multi-lang/en.lproj" "$currPath/jokeApp/platforms/ios/"
+cp -R "$currPath/plugins_code/multi-lang/zh-Hans.lproj" "$currPath/jokeApp/platforms/ios/"
+cp -R "$currPath/plugins_code/multi-lang/zh-Hant.lproj" "$currPath/jokeApp/platforms/ios/"
 
 enCode='		3CADE2381B95522F000132BF /\* en \*/ = \{isa = PBXFileReference; lastKnownFileType = text\.plist\.strings; name = en; path = en\.lproj/Localizable\.strings; sourceTree = "<group>"; \};\n'
 zhCode='		3CADE23A1B95523B000132BF /\* zh-Hans \*/ = \{isa = PBXFileReference; lastKnownFileType = text\.plist\.strings; name = "zh-Hans"; path = "zh-Hans\.lproj/Localizable\.strings"; sourceTree = "<group>"; \};\n'
