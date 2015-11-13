@@ -19,28 +19,33 @@ $templateCache.put('like.html', '\
 //设置
 $templateCache.put('setting.html', '\
 <ion-view class="mine" title="设置">\
-	<ion-content class="ioslist minelist">\
-		<div class="list mtop5">\
-			<label ion-item class="item item-input item-more">\
+	<ion-content class="ioslist left45">\
+		<div class="list">\
+			<label ion-item class="item item-input item-select item-more">\
 				<i class="ion-ios-arrow-right"></i>\
-				<span class="icon ion-ios-chatbubble-outline" style="color:#4DCEEB"></span>\
+				<span class="icon ion-ios-at-outline" style="color:#4DCEEB;font-size:35px;"></span>\
 				<label>字体大小</label>\
+				<select ng-model="$root.fontSize" ng-change="saveSetting(\'fontSize\', $root.fontSize)">\
+					<option value="18">特大</option>\
+					<option value="16">大</option>\
+					<option value="14">中</option>\
+					<option value="12">小</option>\
+				</select>\
 			</label>\
-			<label ion-item class="item item-input item-more">\
-				<i class="ion-ios-arrow-right"></i>\
-				<span class="icon ion-ios-pulse" style="color:#8DD2CB"></span>\
-				<label>夜间模式</label>\
-			</label>\
+			<ion-toggle ng-model="$root.openNight" ng-checked="$root.openNight" ng-change="saveSetting(\'openNight\', $root.openNight)" toggle-class="toggle-{{$root.skin}}">\
+				<span class="icon ion-ios-eye-outline" style="color:#8DD2CB;font-size:30px;"></span>\
+				<span class="title">夜间模式</span>\
+			</ion-toggle>\
 			<label ion-item class="item item-input item-more" ng-click="goStore()">\
 				<i class="ion-ios-arrow-right"></i>\
-				<span class="icon ion-ios-heart-outline" style="color:red"></span>\
+				<span class="icon ion-ios-heart-outline" style="color:red;font-size:23px;"></span>\
 				<label>去评分</label>\
 			</label>\
 		</div>\
-		<div class="list mtop5">\
+		<div class="list">\
 			<label ion-item class="item item-input item-more" ng-click="go(\'/upload\')">\
 				<i class="ion-ios-arrow-right"></i>\
-				<span class="icon ion-medkit" style="color:#FBCF32"></span>\
+				<span class="icon ion-ios-paperplane-outline" style="color:#FBCF32;font-size:30px;"></span>\
 				<label>投稿</label>\
 			</label>\
 			<label ion-item class="item item-input item-more" ng-click="go(\'/feedback\')">\
@@ -49,7 +54,7 @@ $templateCache.put('setting.html', '\
 				<label>我要反馈</label>\
 			</label>\
 		</div>\
-		<div class="list mtop5">\
+		<div class="list">\
 			<label ion-item class="item item-input item-more" ng-click="go(\'/about\')">\
 				<i class="ion-ios-arrow-right"></i>\
 				<span class="icon ion-ios-email-outline" style="color:#9BCA71"></span>\
@@ -87,7 +92,21 @@ $templateCache.put('feedback.html', '\
 	<ion-content on-swipe-right="goBack()">\
 		<div class="feedback-title">欢迎向我们提出改进意见</div>\
 		<div class="feedback-text"><textarea type="text" ng-model="data.message" placeholder="请输入您的反馈意见"></textarea></div>\
-		<div class="padding"><button class="button button-block btn btnFeedback" ng-click="postFeedback()">提交意见</button></div>\
+		<div class="padding"><button class="button button-block" ng-click="postFeedback()">提交意见</button></div>\
+	</ion-content>\
+</ion-view>\
+');
+
+//投稿
+$templateCache.put('upload.html', '\
+<ion-view title="投稿">\
+	<ion-nav-buttons side="left">\
+		<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goBack()"></button>\
+	</ion-nav-buttons>\
+	<ion-content on-swipe-right="goBack()">\
+		<div class="feedback-title">欢迎向我们提供笑话</div>\
+		<div class="feedback-text"><textarea type="text" ng-model="data.message" placeholder="请输入您的笑话"></textarea></div>\
+		<div class="padding"><button class="button button-block" ng-click="postJoke()">提交意见</button></div>\
 	</ion-content>\
 </ion-view>\
 ');

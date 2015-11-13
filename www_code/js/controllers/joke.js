@@ -13,7 +13,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.go = function(path) { $location.path(path); };
 }])
 //笑话
-.controller('jokeController', ['$scope', '$rootScope', 'init', 'msg', 'data', 'JokeService', function($scope, $rootScope, init, msg, data, JokeService) {
+.controller('jokeController', ['$scope', '$rootScope', 'util', 'init', 'msg', 'data', 'JokeService', function($scope, $rootScope, util, init, msg, data, JokeService) {
 	init.registerBase($scope);
 
 	$scope.$on('$ionicView.afterEnter', function() {
@@ -28,7 +28,11 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke($scope.tid, $scope.cid, currPage), function(res) {
 			$scope.isMore = res.list.length == 10;
-			angular.forEach(res.list, function(item) { $scope.list.push(item); });
+			angular.forEach(res.list, function(item) {
+				item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
+				item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+				$scope.list.push(item);
+			});
 			$scope.nodata = $scope.list.length == 0;
 			if (res.tags && !$scope.tags) $scope.tags = res.tags;
 		}, function() {

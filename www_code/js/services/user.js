@@ -60,20 +60,20 @@ app.factory('UserService', ['$http', 'config', 'data', function($http, config, d
 				params: { sessionKey: data.get('sessionKey') }
 			});
 		},
-		//个人资料
-		info: function() {
-			return $http({
-				timeout: config.apiTimeout,
-				url: config.api.format('info'),
-				method: 'jsonp',
-				params: { sessionKey: data.get('sessionKey') }
-			});
-		},
 		//反馈
 		feedback: function(text) {
 			return $http({
 				timeout: config.apiTimeout,
 				url: config.api.format('feedback'),
+				method: 'jsonp',
+				params: { sessionKey: data.get('sessionKey'), text: text }
+			});
+		},
+		//投稿
+		upload: function(text) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('upload'),
 				method: 'jsonp',
 				params: { sessionKey: data.get('sessionKey'), text: text }
 			});

@@ -59,7 +59,13 @@ app.factory('util', function() {
 		isObject: function(obj) { return typeof obj === 'object'; },
 		//是否数组
 		isArray: function(obj) { return Array.isArray(obj); },
-		rand: function(from, to) { return (Math.floor(Math.random() * (to - from)) + from); }
+		rand: function(from, to) { return (Math.floor(Math.random() * (to - from)) + from); },
+		aes_decode: function(uid, sign, encrypted) {
+			var key  = CryptoJS.enc.Utf8.parse(sign);
+			var iv   = CryptoJS.enc.Utf8.parse(sign.substr(0, 16-uid.toString().length) + uid.toString());
+			var decrypted = CryptoJS.AES.decrypt(encrypted,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+			return decrypted.toString(CryptoJS.enc.Utf8);
+		}
 	};
 	return util;
 });

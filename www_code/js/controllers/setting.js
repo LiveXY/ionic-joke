@@ -5,7 +5,13 @@
 app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'config', function($scope, $rootScope, init, data, config) {
 	init.registerBase($scope);
 
-	$scope.$on('$ionicView.afterEnter', function() { });
+	$rootScope.fontSize = data.get('fontSize') || '14';
+	$rootScope.openNight = data.get('openNight') ? true : false;
+
+	$scope.$on('$ionicView.afterEnter', function() {
+		$rootScope.fontSize = data.get('fontSize') || '14';
+		$rootScope.openNight = data.get('openNight') ? true : false;
+	});
 
 	$scope.goStore = function() {
 		var url = '';
@@ -16,6 +22,10 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	$scope.goUpdate = function() {
 		$rootScope.updateBack = true;
 		$scope.go('/version');
+	}
+	$scope.saveSetting = function(key, value){
+		data.set(key, value);
+		$rootScope[key] = value;
 	}
 }])
 //喜欢
@@ -32,7 +42,7 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	$scope.nodata = false;
 
 	$scope.loadData = function () {
-		data.checkApi(UserService.mylike(currPage, pageSize), function(res) {
+		data.checkApi(UserService.likes(currPage, pageSize), function(res) {
 			$scope.isMore = res.list.length == pageSize;
 			angular.forEach(res.list, function(item) { $scope.list.push(item); });
 			$scope.nodata = $scope.list.length == 0;
@@ -64,6 +74,23 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 		data.checkApi(UserService.feedback($scope.data.message), function(res){
 			$scope.goBack();
 			msg.text('谢谢您宝贵的意见！', 1);
+		});
+		$scope.data.message = '';
+	}
+}])
+//投稿
+.controller('uploadController', ['$scope', 'init', 'data', 'msg', 'UserService', function($scope, init, data, msg, UserService) {
+
+	if(window.cordova && window.cordova.plugins.Keyboard)
+		cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+	init.registerBase($scope);
+	$scope.data = {};
+	$scope.postJoke = function(){
+		if (!$scope.data.message) return msg.text('请输入您的笑话！', 1);
+		data.checkApi(UserService.upload($scope.data.message), function(res){
+			$scope.goBack();
+			msg.text('谢谢您宝贵的笑话！', 1);
 		});
 		$scope.data.message = '';
 	}

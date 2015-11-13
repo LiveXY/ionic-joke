@@ -69,6 +69,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	.state('tabs.like', { url: '/like', views: { like: { templateUrl: 'like.html', controller: 'likeController' }}})
 
 	.state('tabs.setting', { url: '/setting', views: { setting: { templateUrl: 'setting.html', controller: 'settingController' }}})
+	.state('upload', { url: '/upload', templateUrl: 'upload.html', controller: 'uploadController' })
 	.state('feedback', { url: '/feedback', templateUrl: 'feedback.html', controller: 'feedbackController' })
 	.state('about', { url: '/about', templateUrl: 'about.html', controller: 'aboutController' })
 	.state('version', { url: '/version', templateUrl: 'version.html', controller: 'versionController' });
@@ -82,8 +83,10 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	]);
 }])
 //启动
-.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data) {
+.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util) {
 	$rootScope.skin = data.get('skin') || 'assertive';
+	$rootScope.fontSize = data.get('fontSize') || '14';
+	$rootScope.openNight = data.get('openNight') ? true : false;
 
 	//禁用系统的虚拟返回键
 	$ionicPlatform.registerBackButtonAction(function (e) {
@@ -107,19 +110,6 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	//$ionicPlatform.on('pause', function(e) { }); //暂停
 	//$ionicPlatform.on('online', function(e) { }); //联网
 
-	function auth(uuid){
-		init.auth(uuid).then(function(u) {
-			if (navigator.splashscreen) $timeout(function(){ navigator.splashscreen.hide(); }, 1000);
-
-			if (u && u.update==1 && navigator.connection) {
-				$location.path('/version');
-				return false;
-			}
-			init.setJPushTagsAndAlias();
-			$location.path('/tabs/joke');
-		});
-	};
-
 	$ionicPlatform.ready(function() {
 		if (navigator.connection && navigator.connection.type == 'none') {
 			if (navigator.splashscreen) navigator.splashscreen.hide();
@@ -131,10 +121,13 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 		}
 		if(window.StatusBar) StatusBar.styleLightContent();
 		init.auth().then(function(u) {
+			$rootScope.uid = u.uid;
+			$rootScope.admin = u.admin;
 			if (navigator.splashscreen) $timeout(function(){ navigator.splashscreen.hide(); }, 1000);
 			if (u && u.update==1 && navigator.connection) { $location.path('/version'); return false; }
 			init.setJPushTagsAndAlias();
-			$location.path('/tabs/joke');
+			//$location.path('/tabs/joke');
+			$location.path('/tabs/setting');
 		});
 	});
 }]);

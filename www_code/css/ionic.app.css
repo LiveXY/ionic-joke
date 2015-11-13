@@ -6,6 +6,44 @@ a { text-decoration: none }
 .radius25,.button-bar>.button.radius25,.popup-buttons .button.radius25 { border-radius: 25px; -webkit-border-radius:25px; -moz-border-radius: 25px; }
 button, input, label, select, textarea { font-size:16px; }
 
+ion-content, ion-modal-view { background-color: #E9E9E9; }
+
+ion-list .list { margin-top:-2px; }
+.ioslist.left45 .list .item:after { left:45px; }
+.ioslist.left14 .list .item:after { left:14px; }
+.ioslist.left45 .list,.ioslist.left14 .list { margin-bottom:15px; }
+.ioslist .list { border-top:1px solid #ddd;border-bottom:1px solid #ddd; }
+.ioslist .list .item { border-style:none; }
+.ioslist .list .item:after {content: '';position: absolute;bottom: 1px;left: 0;right: 0px;border-bottom: 1px solid #ddd;}
+.ioslist .list .item:last-child:after { border-bottom:none; }
+
+.ioslist .list .item-more { height:46px; }
+.ioslist .list .item-more .ion-ios-arrow-right { right:15px; position: absolute; top: 20%; font-size: 20px; color: #aaa; z-index:10; }
+.ioslist .list .item-more .icon,
+.ioslist .list .item-more .autoicon { width:32px; font-size:25px;padding:0px;color:#ccc;display:block; }
+.ioslist .list .item-more .autoicon { width:auto; }
+
+.ioslist .list .item.activated,
+.ioslist .list .item.item-complex .item-content { background-color:#fff; }
+.ioslist .list .item.clicked,
+.ioslist .list .item.clicked .item-content,
+.ioslist .list .clicked .item { background-color:#d9d9d9; }
+
+.ioslist .list .item-toggle { height:46px; }
+.ioslist .list .item-toggle div { margin-top:-6px; }
+.ioslist .list .item-toggle .icon { vertical-align:middle;}
+.ioslist .list .item-toggle div span.title { padding-left:5px; }
+.ioslist .list .item-toggle .toggle { margin-top:-2px; }
+
+.ioslist .list .item-select { height:46px; }
+.ioslist .list .item-select:after { position: inherit;top: inherit;right: inherit;margin-top: inherit;width: inherit;height: inherit;border-top: inherit;border-right: inherit;border-left: inherit;color: inherit;content: inherit;pointer-events: none; content: '';position: absolute;bottom: 1px;left: 0;right: 0px;border-bottom: 1px solid #ddd;}
+.ioslist .list .item-select select { padding-right:32px; }
+
+
+.feedback-title { font-size:16px; padding:10px; }
+.feedback-text textarea { width:100%; height:150px; padding:10px; resize:none; }
+.feedback-text .inputnum { position:absolute; right:10px; top:270px; z-index:10; color:#999; }
+
 .joke ion-header-bar.header-transparent,
 .header-transparent { background-image:none; }
 .header-transparent .button-clear.button-clear { color:#fff; }
