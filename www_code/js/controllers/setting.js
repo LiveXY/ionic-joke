@@ -11,6 +11,8 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	$scope.$on('$ionicView.afterEnter', function() {
 		$rootScope.fontSize = data.get('fontSize') || '14';
 		$rootScope.openNight = data.get('openNight') ? true : false;
+		if(window.cordova && window.cordova.plugins.Keyboard)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
 	});
 
 	$scope.goStore = function() {
@@ -29,7 +31,7 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	}
 }])
 //喜欢
-.controller('likeController', ['$scope', 'init', 'data', 'msg', 'config', 'UserService', function($scope, init, data, msg, config, UserService) {
+.controller('likeController', ['$scope', '$rootScope', 'init', 'data', 'msg', 'config', 'util', 'UserService', function($scope, $rootScope, init, data, msg, config, util, UserService) {
 	init.registerBase($scope);
 
 	$scope.$on('$ionicView.afterEnter', function() {
@@ -41,10 +43,23 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	$scope.list = [];
 	$scope.nodata = false;
 
+	$scope.iLike = function(id) {
+		data.checkApi(JokeService.jokeLike(id), function(res) { });
+	}
+	$scope.iCopy = function(text) {
+		if (window.cordova && window.cordova.plugins.clipboard) {
+			cordova.plugins.clipboard.copy(text);
+			msg.text('复制成功！', 1);
+		}
+	}
 	$scope.loadData = function () {
 		data.checkApi(UserService.likes(currPage, pageSize), function(res) {
 			$scope.isMore = res.list.length == pageSize;
-			angular.forEach(res.list, function(item) { $scope.list.push(item); });
+			angular.forEach(res.list, function(item) {
+				item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
+				item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+				$scope.list.push(item);
+			});
 			$scope.nodata = $scope.list.length == 0;
 		}, function() {
 			$scope.isMore = false;

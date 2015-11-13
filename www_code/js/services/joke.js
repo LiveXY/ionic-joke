@@ -16,7 +16,7 @@ app.factory('JokeService', ['$http', 'config', 'data', function($http, config, d
 		jokeLike: function(id){
 			return $http({
 				timeout: config.apiTimeout,
-				url: config.api.format('likeJoke'),
+				url: config.api.format('jokeLike'),
 				method: 'jsonp',
 				params: { sessionKey: data.get('sessionKey'), id: id }
 			});
@@ -25,7 +25,7 @@ app.factory('JokeService', ['$http', 'config', 'data', function($http, config, d
 		jokeShare: function(id) {
 			return $http({
 				timeout: config.apiTimeout,
-				url: config.api.format('shareJoke'),
+				url: config.api.format('jokeShare'),
 				method: 'jsonp',
 				params: { id: id }
 			});

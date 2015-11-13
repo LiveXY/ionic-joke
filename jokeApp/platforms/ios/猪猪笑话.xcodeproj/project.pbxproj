@@ -75,6 +75,7 @@
 		FAA4489EEC87465582E2585D /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 477359706A1F48D1A8E276BB /* CDVReachability.m */; };
 		FE57E8F17DCA42F39E2C621E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EE7E9686324399A2B56394 /* CDVDevice.m */; };
 		FE5F59782BAF4F8A99DF8373 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92972A7FD99440059C2A97B4 /* libz.dylib */; };
+		3CADE2371B95522F000132BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CADE2391B95522F000132BF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,9 @@
 		F190500B8D834C90B9151C80 /* CoreTelephony.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "猪猪笑话/config.xml"; sourceTree = "<group>"; };
 		FB41F91125104F51ADDCC376 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = "cordova-plugin-zip/Plugins/minizip/unzip.h"; sourceTree = "<group>"; };
+		3CADE2381B95522F000132BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3CADE23A1B95523B000132BF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		64AD6F961B958FEF00E5560C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3CADE2391B95522F000132BF /* Localizable.strings */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
 				EB87FDF21871DA7A0020F90C /* merges */,
@@ -514,6 +519,7 @@
 				7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */,
 				3088BBC0154F3926009F9C59 /* Default-Portrait~ipad.png in Resources */,
 				30B4F30019D5E07200D9F7D8 /* Default-667h.png in Resources */,
+				3CADE2371B95522F000132BF /* Localizable.strings in Resources */,
 				7E7966DE1810823500FA85AD /* icon-40.png in Resources */,
 				3088BBC1154F3926009F9C59 /* Default@2x~iphone.png in Resources */,
 				7E7966E21810823500FA85AD /* icon-60.png in Resources */,
@@ -593,6 +599,19 @@
 			targetProxy = 301BF550109A68C00062928A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3CADE2391B95522F000132BF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CADE2381B95522F000132BF /* en */,
+				3CADE23A1B95523B000132BF /* zh-Hans */,
+				64AD6F961B958FEF00E5560C /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

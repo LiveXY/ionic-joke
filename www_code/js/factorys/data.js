@@ -47,9 +47,8 @@ app.factory('data', ['$cordovaNetwork', '$window', 'msg', 'util', 'config', func
 				console.log(err);
 				if (error) error(err, status);
 				var flag = false, url = p.$$state.value.config.url;
-				if (url.indexOf('/app/messages') == -1) flag = true;
-				if (url.indexOf('/app/like_doctor') == -1) flag = true;
-				if (url.indexOf('/app/newsLike') == -1) flag = true;
+				if (url.indexOf('/app/jokeLike') == -1) flag = true;
+				if (url.indexOf('/app/meituLike') == -1) flag = true;
 				if (flag) msg.text('请检查网络连接！', 1);
 			});
 			if (fina) p.finally(fina);

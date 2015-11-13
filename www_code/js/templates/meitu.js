@@ -10,6 +10,7 @@ $templateCache.put('meitu.html', '\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
 		<ion-list>\
 		</ion-list>\
+		<div ng-if="nodata" class="nodata">赞无数据！</div>\
 		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
 	</ion-content>\
 </ion-view>\

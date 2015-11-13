@@ -25,6 +25,15 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.nodata = false;
 	$scope.cid = 0; $scope.tid = 0;
 
+	$scope.iLike = function(id) {
+		data.checkApi(JokeService.jokeLike(id), function(res) { });
+	}
+	$scope.iCopy = function(text) {
+		if (window.cordova && window.cordova.plugins.clipboard) {
+			cordova.plugins.clipboard.copy(text);
+			msg.text('复制成功！', 1);
+		}
+	}
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke($scope.tid, $scope.cid, currPage), function(res) {
 			$scope.isMore = res.list.length == 10;

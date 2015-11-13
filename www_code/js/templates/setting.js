@@ -8,9 +8,14 @@ $templateCache.put('like.html', '\
 <ion-view title="喜欢">\
 	<ion-content>\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
-		<ion-list>\
-		</ion-list>\
-		<div ng-if="nodata" class="nodata">暂无数据！</div>\
+		<div ion-item class="item-card" ng-repeat="item in list">\
+			<div class="item item-body"><p style="font-size:{{$root.fontSize}}px">{{item.text}}</p></div>\
+			<div class="item item-footer">\
+				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
+				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
+			</div>\
+		</div>\
+		<div ng-if="nodata" class="nodata">你还没有喜欢的笑话和美图！</div>\
 		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
 	</ion-content>\
 </ion-view>\
@@ -36,11 +41,6 @@ $templateCache.put('setting.html', '\
 				<span class="icon ion-ios-eye-outline" style="color:#8DD2CB;font-size:30px;"></span>\
 				<span class="title">夜间模式</span>\
 			</ion-toggle>\
-			<label ion-item class="item item-input item-more" ng-click="goStore()">\
-				<i class="ion-ios-arrow-right"></i>\
-				<span class="icon ion-ios-heart-outline" style="color:red;font-size:23px;"></span>\
-				<label>去评分</label>\
-			</label>\
 		</div>\
 		<div class="list">\
 			<label ion-item class="item item-input item-more" ng-click="go(\'/upload\')">\
@@ -52,6 +52,11 @@ $templateCache.put('setting.html', '\
 				<i class="ion-ios-arrow-right"></i>\
 				<span class="icon ion-ios-compose-outline" style="color:#FD8323"></span>\
 				<label>我要反馈</label>\
+			</label>\
+			<label ion-item class="item item-input item-more" ng-click="goStore()">\
+				<i class="ion-ios-arrow-right"></i>\
+				<span class="icon ion-ios-heart-outline" style="color:red;font-size:23px;"></span>\
+				<label>去评分</label>\
 			</label>\
 		</div>\
 		<div class="list">\
