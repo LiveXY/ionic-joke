@@ -59,8 +59,10 @@ ion-list .list,.list { margin-top:-1px; }
 .filter-menu.popover .filter-title { height:42px; font-size:16px; padding-left: 16px; line-height:40px; }
 .filter-menu.popover ion-item { border-left:none; padding:10px 20px; }
 .filter-menu.popover ion-item span { display:inline-block; width:20px; height:15px; }
+.platform-ios .filter-menu.popover { top:50px; }
 
 .search-box { background-color:transparent; }
+.platform-ios .search-box { margin-top:-20px; }
 
 .joke ion-header-bar.header-transparent,
 .header-transparent { background-image:none; }
