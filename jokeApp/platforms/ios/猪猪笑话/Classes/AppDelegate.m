@@ -88,6 +88,26 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
+    //原内容保持不变
+    // Required add
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [APService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil];
+    } else {
+        //categories 必须为nil
+        [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
+    }
+#else
+    //categories 必须为nil
+    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
+#endif
+    // Required
+    [APService setupWithOption:launchOptions];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [APService setBadge:0];
+    
+    //[JPushPlugin setLaunchOptions:launchOptions];
     return YES;
 }
 
@@ -113,7 +133,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:CDVLocalNotification object:notification];
 }
 
-#ifndef DISABLE_PUSH_NOTIFICATIONS
+//#ifndef DISABLE_PUSH_NOTIFICATIONS
 
     - (void)                                 application:(UIApplication*)application
         didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
@@ -125,6 +145,23 @@
             stringByReplacingOccurrencesOfString:@" " withString:@""];
 
         [[NSNotificationCenter defaultCenter] postNotificationName:CDVRemoteNotification object:token];
+        
+        //原内容保持不变
+        // Required add
+        [APService registerDeviceToken:deviceToken];
+        [APService setDebugMode];
+    }
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+        //原内容保持不变
+        // Required
+        [APService handleRemoteNotification:userInfo];
+        BOOL isActive = application.applicationState == UIApplicationStateActive;
+        NSDictionary *dict=[[NSMutableDictionary alloc] initWithDictionary:userInfo];
+        [dict setValue: [[NSNumber alloc] initWithBool:isActive] forKey:@"isActive" ];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kJPushPluginReceiveNotification object:dict];
+        
+        //[APService handleRemoteNotification:userInfo];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:kJPushPluginReceiveNotification object:userInfo];
     }
 
     - (void)                                 application:(UIApplication*)application
@@ -133,7 +170,7 @@
         // re-post ( broadcast )
         [[NSNotificationCenter defaultCenter] postNotificationName:CDVRemoteNotificationError object:error];
     }
-#endif
+//#endif
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
 - (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window

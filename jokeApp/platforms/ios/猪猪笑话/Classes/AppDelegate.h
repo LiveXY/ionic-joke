@@ -28,6 +28,8 @@
 #import <UIKit/UIKit.h>
 
 #import <Cordova/CDVViewController.h>
+#import "APService.h"
+#import "JPushPlugin.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate>{}
 

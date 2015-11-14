@@ -80,5 +80,13 @@ sudo cordova plugin add ../plugins_code/jpush-phonegap-plugin
 ====================================================
 生成www:
 ```
-./www.sh
+./www.sh #只压缩复制文件到各平台
+./www.sh b #只压缩复制文件到各平台并编译
+```
+====================================================
+生成android平台apk文件:
+```
+./android-release.sh #安装到手机
+./android-release.sh b #编译并安装到手机
+./android-release.sh b 渠道名 #编译各渠道并安装到手机
 ```
