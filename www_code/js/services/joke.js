@@ -4,12 +4,12 @@
 app.factory('JokeService', ['$http', 'config', 'data', function($http, config, data) {
 	return {
 		//笑话
-		joke: function(tid, cid, page) {
+		joke: function(tid, cid, page, key) {
 			return $http({
 				timeout: config.apiTimeout,
 				url: config.api.format('joke'),
 				method: 'jsonp',
-				params: { sessionKey: data.get('sessionKey'), tid: tid, cid: cid, page: page }
+				params: { sessionKey: data.get('sessionKey'), tid: tid, cid: cid, page: page, key: key }
 			});
 		},
 		//喜欢笑话

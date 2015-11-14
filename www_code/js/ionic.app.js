@@ -63,6 +63,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	.state('tabs', { url: '/tabs', abstract: true, templateUrl: 'tabs.html', controller: 'tabsController' })
 
 	.state('tabs.joke', { url: '/joke', views: { joke: { templateUrl: 'joke.html', controller: 'jokeController' }}})
+	.state('search', { url: '/search', templateUrl: 'search.html', controller: 'searchController' })
 
 	.state('tabs.meitu', { url: '/meitu', views: { meitu: { templateUrl: 'meitu.html', controller: 'meituController' }}})
 
