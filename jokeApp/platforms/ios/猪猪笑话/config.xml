@@ -46,6 +46,12 @@
     <feature name="AppCore">
         <param name="ios-package" value="CDVAppCore" />
     </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="JPushPlugin">
+        <param name="ios-package" value="JPushPlugin" />
+    </feature>
     <feature name="Zip">
         <param name="ios-package" value="ZipPlugin" />
     </feature>
@@ -97,10 +103,4 @@
     <preference name="FadeSplashScreen" value="true" />
     <preference name="FadeSplashScreenDuration" value="1.0" />
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="JPushPlugin">
-        <param name="ios-package" value="JPushPlugin" />
-    </feature>
 </widget>
