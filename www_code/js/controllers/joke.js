@@ -200,6 +200,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 				$scope.joke = null;
 				$scope.list.splice(index, 1);
 				config.refresh.joke = true;
+				$scope.closeAudit();
 			}, null, function(){ msg.hide(); });
 		}
 	};
