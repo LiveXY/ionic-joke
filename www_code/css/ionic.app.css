@@ -153,6 +153,37 @@ ion-list .list,.list { margin-top:-1px; }
 .action-sheet-group,.platform-android .action-sheet-group { margin-bottom:0; border-radius:0; }
 .action-sheet-options,.platform-android .action-sheet-options { background: rgba(255,255,255,0.92); }
 
+.joke.dark .pane,
+.joke.dark .view,
+.joke.dark ion-content,
+.joke.dark ion-modal-view { background-color:#293039; }
+.joke.dark .item { background-color:#20262E; border-color:#151515; color:#747884 }
+.joke.dark .tabs a,
+.joke.dark .button.button-clear,
+.joke.dark .bar .title,
+.joke.dark .filter-title,
+.joke.dark .item p { color:#747884; }
+.joke.dark .tabs a.tab-item-active { color:#ccc; }
+.joke.dark .tabs,
+.joke.dark ion-header-bar { background-color: #1E2226; background-image: linear-gradient(0deg,#1E2226,#1E2226 50%,transparent 50%); }
+.joke.dark .ioslist .list .item:after { border-color:#151515; }
+.joke.dark .ioslist .list { border-top:1px solid #151515; border-bottom:1px solid #151515; }
+.joke.dark .ioslist .list .item.activated,
+.joke.dark .ioslist .list .item.item-complex .item-content { background-color:#20262E; }
+.joke.dark .ioslist .list .item.clicked,
+.joke.dark .ioslist .list .item.clicked .item-content,
+.joke.dark .ioslist .list .clicked .item { background-color:#111; }
+.joke.dark .ioslist .list .item-more .ion-ios-arrow-right { color:#747884; }
+.joke.dark .item-select select { background-color:transparent; color:#747884; }
+.joke.dark .toggle.toggle-dark input:checked+.track,
+.joke.dark .toggle .track { background-color:#111; border:1px solid #111; }
+.joke.dark .toggle .handle,
+.joke.dark .toggle input:checked+.track .handle { background-color:#999; }
+.joke.dark .audit-title,
+.joke.dark .feedback-title { color:#747884; }
+.joke.dark .audit-edit input,
+.joke.dark .audit-edit textarea,
+.joke.dark .feedback-text textarea { background-color:#20262E; }
 
 /*iPhone 6+ Portrait*/
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {

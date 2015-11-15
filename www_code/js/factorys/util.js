@@ -61,7 +61,7 @@ app.factory('util', function() {
 		isArray: function(obj) { return Array.isArray(obj); },
 		rand: function(from, to) { return (Math.floor(Math.random() * (to - from)) + from); },
 		aes_decode: function(uid, sign, encrypted) {
-			if (!uid) return '';
+			if (!uid || !encrypted) return '';
 			var key  = CryptoJS.enc.Utf8.parse(sign);
 			var iv   = CryptoJS.enc.Utf8.parse(sign.substr(0, 16-uid.toString().length) + uid.toString());
 			var decrypted = CryptoJS.AES.decrypt(encrypted,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});

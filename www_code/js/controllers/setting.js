@@ -2,15 +2,15 @@
 'use strict';
 
 //我的
-app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'config', function($scope, $rootScope, init, data, config) {
+app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init', 'data', 'config', function($timeout, $scope, $rootScope, init, data, config) {
 	init.registerBase($scope);
 
 	$rootScope.fontSize = data.get('fontSize') || '14';
-	$rootScope.openNight = data.get('openNight') ? true : false;
+	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 
 	$scope.$on('$ionicView.afterEnter', function() {
 		$rootScope.fontSize = data.get('fontSize') || '14';
-		$rootScope.openNight = data.get('openNight') ? true : false;
+		$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 		if(window.cordova && window.cordova.plugins.Keyboard)
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
 	});
@@ -28,6 +28,19 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 	$scope.saveSetting = function(key, value){
 		data.set(key, value);
 		$rootScope[key] = value;
+		if (key == 'openNight') {
+			var skin = value ? 'dark' : 'assertive'
+			data.set('skin', skin);
+			$timeout(function(){
+				$rootScope.skin = skin;
+				if (skin == 'assertive') {
+					if(window.StatusBar) StatusBar.styleLightContent();
+					angular.element(document.querySelector("ion-header-bar")).removeClass('bar-dark').addClass('bar-assertive');
+				} else {
+					if(window.StatusBar) StatusBar.styleDefault();
+				}
+			});
+		}
 	}
 }])
 //我要反馈

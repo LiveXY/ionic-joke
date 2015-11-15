@@ -72,7 +72,7 @@ $templateCache.put('version.html', '\
 			<div class="version-title">{{item.vname}} 更新内容：</div>\
 			<div class="version-text" data-ng-bind-html="item.vtext | toSafeHtml"></div>\
 		</div>\
-		<div class="padding" ng-if="$root.updateBack"><button class="button button-block btn" ng-click="update()">下载更新</button></div>\
+		<div class="padding" ng-if="$root.updateBack"><button class="button button-block button-{{$root.skin}}" ng-click="update()">下载更新</button></div>\
 	</ion-content>\
 </ion-view>\
 ');
@@ -86,7 +86,7 @@ $templateCache.put('feedback.html', '\
 	<ion-content on-swipe-right="goBack()">\
 		<div class="feedback-title">欢迎向我们提出改进意见</div>\
 		<div class="feedback-text"><textarea type="text" ng-model="data.message" placeholder="请输入您的反馈意见"></textarea></div>\
-		<div class="padding"><button class="button button-block" ng-click="postFeedback()">提交意见</button></div>\
+		<div class="padding"><button class="button button-block button-{{$root.skin}}" ng-click="postFeedback()">提交意见</button></div>\
 	</ion-content>\
 </ion-view>\
 ');
@@ -100,7 +100,7 @@ $templateCache.put('upload.html', '\
 	<ion-content on-swipe-right="goBack()">\
 		<div class="feedback-title">欢迎向我们提供笑话</div>\
 		<div class="feedback-text"><textarea type="text" ng-model="data.message" placeholder="请输入您的笑话"></textarea></div>\
-		<div class="padding"><button class="button button-block" ng-click="postJoke()">提交意见</button></div>\
+		<div class="padding"><button class="button button-block button-{{$root.skin}}" ng-click="postJoke()">提交意见</button></div>\
 	</ion-content>\
 </ion-view>\
 ');

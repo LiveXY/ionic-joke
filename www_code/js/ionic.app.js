@@ -86,9 +86,9 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 }])
 //启动
 .run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util) {
-	$rootScope.skin = data.get('skin') || 'assertive';
 	$rootScope.fontSize = data.get('fontSize') || '14';
-	$rootScope.openNight = data.get('openNight') ? true : false;
+	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
+	$rootScope.skin = $rootScope.openNight ? 'dark' : (data.get('skin') || 'assertive');
 
 	//禁用系统的虚拟返回键
 	$ionicPlatform.registerBackButtonAction(function (e) {
@@ -121,7 +121,10 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
-		if(window.StatusBar) StatusBar.styleLightContent();
+		if(window.StatusBar && $rootScope.skin == 'assertive')
+			StatusBar.styleLightContent();
+		else if(window.StatusBar && $rootScope.skin == 'dark')
+			StatusBar.styleDefault();
 		init.auth().then(function(u) {
 			$rootScope.uid = u.uid;
 			$rootScope.admin = u.admin;

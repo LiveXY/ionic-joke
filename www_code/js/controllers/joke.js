@@ -202,8 +202,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 		}, function() {
 			$scope.isMore = false;
 		}, function() {
-			if (currPage == 1) $scope.$broadcast('scroll.refreshComplete');
-			currPage++;
+			$scope.$broadcast('scroll.refreshComplete');
 			$scope.$broadcast('scroll.infiniteScrollComplete');
 		});
 	};
