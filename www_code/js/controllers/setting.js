@@ -34,10 +34,10 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 			$timeout(function(){
 				$rootScope.skin = skin;
 				if (skin == 'assertive') {
-					if(window.StatusBar) StatusBar.styleLightContent();
+					//if(window.StatusBar) StatusBar.styleLightContent();
 					angular.element(document.querySelector("ion-header-bar")).removeClass('bar-dark').addClass('bar-assertive');
 				} else {
-					if(window.StatusBar) StatusBar.styleDefault();
+					//if(window.StatusBar) StatusBar.styleDefault();
 				}
 			});
 		}

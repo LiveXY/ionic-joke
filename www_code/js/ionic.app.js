@@ -121,10 +121,11 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
-		if(window.StatusBar && $rootScope.skin == 'assertive')
-			StatusBar.styleLightContent();
-		else if(window.StatusBar && $rootScope.skin == 'dark')
-			StatusBar.styleDefault();
+		if(window.StatusBar) StatusBar.styleLightContent();
+		//if(window.StatusBar && $rootScope.skin == 'assertive')
+		//	StatusBar.styleLightContent();
+		//else if(window.StatusBar && $rootScope.skin == 'dark')
+		//	StatusBar.styleDefault();
 		init.auth().then(function(u) {
 			$rootScope.uid = u.uid;
 			$rootScope.admin = u.admin;

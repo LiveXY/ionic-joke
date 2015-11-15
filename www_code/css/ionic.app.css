@@ -158,9 +158,9 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark ion-content,
 .joke.dark ion-modal-view { background-color:#293039; }
 .joke.dark .item { background-color:#20262E; border-color:#151515; color:#747884 }
+.joke.dark .bar .title { color:#ccc; }
 .joke.dark .tabs a,
 .joke.dark .button.button-clear,
-.joke.dark .bar .title,
 .joke.dark .filter-title,
 .joke.dark .item p { color:#747884; }
 .joke.dark .tabs a.tab-item-active { color:#ccc; }
@@ -179,11 +179,15 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .toggle .track { background-color:#111; border:1px solid #111; }
 .joke.dark .toggle .handle,
 .joke.dark .toggle input:checked+.track .handle { background-color:#999; }
-.joke.dark .audit-title,
+.joke.dark .ion-tags {background-color:#20262E;}
+.joke.dark .ion-tags a {background-color:#293039; border:1px solid #111; color:#747884; }
+.joke.dark .ion-tags a.active { background-color:#d00; border: 1px solid #f00; color:#fff; }
+.joke.dark .audit-title { color:#747884; background-color:#20262E; }
 .joke.dark .feedback-title { color:#747884; }
+.joke.dark .audit-edit { border-bottom:1px solid #111; }
 .joke.dark .audit-edit input,
 .joke.dark .audit-edit textarea,
-.joke.dark .feedback-text textarea { background-color:#20262E; }
+.joke.dark .feedback-text textarea { background-color:#20262E; color:#888; }
 
 /*iPhone 6+ Portrait*/
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
