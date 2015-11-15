@@ -63,6 +63,19 @@ app.factory('init', ['$http', '$location', '$ionicHistory', '$rootScope', '$ioni
 			$scope.goBack = function() { $ionicHistory.goBack(); };
 			//当前用户
 			$scope.currUser = function() { return data.getObject('user'); };
+			//复制
+			$scope.iCopy = function(text) {
+				if (window.cordova && window.cordova.plugins.clipboard) {
+					cordova.plugins.clipboard.copy(text);
+					msg.text('复制成功！', 1);
+				}
+			};
+			//喜欢
+			$scope.iLike = function(id) {
+				data.checkApi(JokeService.jokeLike(id), function(res) {
+					config.refresh.like = true;
+				});
+			}
 		}
 	};
 	return init;

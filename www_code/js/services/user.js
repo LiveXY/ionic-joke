@@ -37,6 +37,24 @@ app.factory('UserService', ['$http', 'config', 'data', function($http, config, d
 				params: { version: config.vid }
 			});
 		},
+		//QQ登录
+		qqLogin: function(userid, accessToken) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('qqLogin'),
+				method: "jsonp",
+				params: { 'sessionKey': data.get("sessionKey"), userid: userid, accessToken: accessToken, bundleid: config.bundleid, platform: getPlatform() }
+			});
+		},
+		//微信登录
+		wechatLogin: function(code) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('wechatLogin'),
+				method: "jsonp",
+				params: { 'sessionKey': data.get("sessionKey"), code: code, bundleid: config.bundleid, platform: getPlatform() }
+			});
+		},
 		//登录并注册
 		auth: function() {
 			var pf = getPlatform();

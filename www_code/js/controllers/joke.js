@@ -32,17 +32,6 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.list = []; $scope.tags = null;
 	$scope.nodata = false;
 
-	$scope.iLike = function(id) {
-		data.checkApi(JokeService.jokeLike(id), function(res) {
-			config.refresh.like = true;
-		});
-	}
-	$scope.iCopy = function(text) {
-		if (window.cordova && window.cordova.plugins.clipboard) {
-			cordova.plugins.clipboard.copy(text);
-			msg.text('复制成功！', 1);
-		}
-	}
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke($scope.tid, $scope.cid, currPage), function(res) {
 			$scope.isMore = res.list.length == 10;
@@ -83,17 +72,6 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.searchKey = '';
 	$scope.searchState = 0;
 
-	$scope.iLike = function(id) {
-		data.checkApi(JokeService.jokeLike(id), function(res) {
-			config.refresh.like = true;
-		});
-	}
-	$scope.iCopy = function(text) {
-		if (window.cordova && window.cordova.plugins.clipboard) {
-			cordova.plugins.clipboard.copy(text);
-			msg.text('复制成功！', 1);
-		}
-	}
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke(0, 0, currPage, $scope.searchKey), function(res) {
 			$scope.isMore = res.list.length == 10;
@@ -143,15 +121,6 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.list = [];
 	$scope.nodata = false;
 
-	$scope.iLike = function(id) {
-		data.checkApi(JokeService.jokeLike(id), function(res) { });
-	}
-	$scope.iCopy = function(text) {
-		if (window.cordova && window.cordova.plugins.clipboard) {
-			cordova.plugins.clipboard.copy(text);
-			msg.text('复制成功！', 1);
-		}
-	}
 	$scope.loadData = function () {
 		data.checkApi(UserService.likes(currPage, pageSize), function(res) {
 			$scope.isMore = res.list.length == pageSize;
@@ -209,12 +178,6 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.list = []; $scope.tags = null;
 	$scope.nodata = false;
 
-	$scope.iCopy = function(text) {
-		if (window.cordova && window.cordova.plugins.clipboard) {
-			cordova.plugins.clipboard.copy(text);
-			msg.text('复制成功！', 1);
-		}
-	}
 	$scope.loadData = function () {
 		data.checkApi(JokeService.audit($scope.tags ? 0 : 1), function(res) {
 			$scope.isMore = res.list.length == 10;

@@ -1,7 +1,69 @@
-//分享
+//登录与分享
 'use strict';
 
-app.factory('shareTo', ['data', 'msg', function(data, msg) {
+app.factory('login', ['data', 'msg', 'UserService', function(data, msg, UserService) {
+	var wechatIsInstalled = false;
+	var qqIsInstalled = false;
+
+	return {
+		init: function() {
+			if (window['Wechat'] && Wechat.isInstalled)
+				Wechat.isInstalled(function (installed) { if (installed) wechatIsInstalled = true; }, function (reason) { });
+			if (window['YCQQ'] && YCQQ.checkClientInstalled)
+				YCQQ.checkClientInstalled(function(){ qqIsInstalled = true; }, function () { });
+		},
+		wechatIsInstalled: function (){ return wechatIsInstalled; },
+		qqIsInstalled: function (){ return qqIsInstalled; },
+		//微信登录
+		wechat: function(callback) {
+			if (wechatIsInstalled) {
+				Wechat.auth('snsapi_userinfo', function (res) {
+					msg.loading('正在登录...');
+					data.checkApi(UserService.wechatLogin(res.code), function(res){
+						data.set('sessionKey', res.sessionKey);
+						res.user.login = res.login;
+						data.setObject('user', res.user);
+						data.refreshAll();
+						if (callback) callback();
+						msg.hide();
+					}, function(){
+						msg.text('登录失败！', 2);
+					});
+				}, function (reason) {
+					msg.text(reason, 2);
+				});
+			}
+			return true;
+		},
+		//QQ登录
+		qq: function(callback) {
+			if (qqIsInstalled) {
+				YCQQ.ssoLogin(function(res) {
+					msg.loading('正在登录...');
+					data.checkApi(UserService.qqLogin(res.userid, res.access_token), function(res){
+						data.set('sessionKey', res.sessionKey);
+						res.user.login = res.login;
+						data.setObject('user', res.user);
+						data.refreshAll();
+						if (callback) callback();
+						msg.hide();
+					}, function(){
+						msg.text('登录失败！', 2);
+					});
+				}, function(reason){
+					msg.text(reason, 2);
+				}, 1);
+			}
+			return true;
+		},
+		//就诊卡
+		card: function(callback) {
+			msg.text('暂不支持此登录！', 2);
+			return false;
+		}
+	};
+}])
+.factory('shareTo', ['data', 'msg', function(data, msg) {
 	//微信分享
 	function wechatShare(title, description, thumb, url, scene, callback) {
 		var params = {
@@ -31,9 +93,9 @@ app.factory('shareTo', ['data', 'msg', function(data, msg) {
 			imageUrl: thumb
 		};
 		switch(type){
-			case 0: args.appName = '猪猪笑话'; key = "shareToQQ"; break;
+			case 0: args.appName = '心情温度计'; key = "shareToQQ"; break;
 			case 1: args.imageUrl = [thumb]; key = "shareToQzone"; break;
-			case 2: args.appName = '猪猪笑话'; key = "addToQQFavorites"; break;
+			case 2: args.appName = '心情温度计'; key = "addToQQFavorites"; break;
 		}
 		YCQQ[key](function(){
 			msg.text((type == 2 ? '收藏' : '分享') + '成功！', 5);
@@ -66,52 +128,66 @@ app.factory('shareTo', ['data', 'msg', function(data, msg) {
 			}, function () {
 
 			});
-		},
-		//微博分享
-		weibo: function(title, description, thumb, url, callback) {
-			if (typeof YCWeibo === "undefined") return msg.text('未安装微博插件！', 2);
-			var args = {
-				url: url,
-				title: title,
-				description: description,
-				imageUrl: thumb,
-				defaultText: ''
-			};
-			YCWeibo.shareToWeibo(function(){
-				msg.text('分享成功！', 5);
-				if (callback) callback();
-			},function(reason){
-				msg.text('分享失败：' + reason, 5);
-			},args);
 		}
 	};
 }])
-.factory('share', ['$ionicActionSheet', 'shareTo', function($ionicActionSheet, shareTo) {
+.factory('share', ['$ionicActionSheet', 'shareTo', 'login', function($ionicActionSheet, shareTo, login) {
 	return {
 		//弹出分享
 		pop: function(title, description, thumb, url, callback) {
-			$ionicActionSheet.show({
-				titleText: '与朋友们分享',
-				buttons: [
-					{ text: '分享到微信朋友圈' },
-					{ text: '分享到微信好友' },
-					{ text: '收藏到微信' },
-					{ text: '分享到QQ空间' },
-					{ text: '分享到QQ好友' },
-					{ text: '收藏到QQ' }//,
-					//{ text: '分享到微博' }
-				],
-				buttonClicked: function(index) {
-					if (index === 0) shareTo.wechat(title, description, thumb, url, 1, callback);
-					else if (index === 1) shareTo.wechat(title, description, thumb, url, 0, callback);
-					else if (index === 2) shareTo.wechat(title, description, thumb, url, 2, callback);
-					else if (index === 3) shareTo.qq(title, description, thumb, url, 1, callback);
-					else if (index === 4) shareTo.qq(title, description, thumb, url, 0, callback);
-					else if (index === 5) shareTo.qq(title, description, thumb, url, 2, callback);
-					else if (index === 6) shareTo.weibo(title, description, thumb, url, callback);
-					return true;
-				}
-			});
+			if (login.wechatIsInstalled() && login.qqIsInstalled()) {
+				$ionicActionSheet.show({
+					titleText: '与朋友们分享',
+					buttons: [
+						{ text: '分享到微信朋友圈' },
+						{ text: '分享到微信好友' },
+						{ text: '收藏到微信' },
+						{ text: '分享到QQ空间' },
+						{ text: '分享到QQ好友' },
+						{ text: '收藏到QQ' }
+					],
+					buttonClicked: function(index) {
+						if (index === 0) shareTo.wechat(title, description, thumb, url, 1, callback);
+						else if (index === 1) shareTo.wechat(title, description, thumb, url, 0, callback);
+						else if (index === 2) shareTo.wechat(title, description, thumb, url, 2, callback);
+						else if (index === 3) shareTo.qq(title, description, thumb, url, 1, callback);
+						else if (index === 4) shareTo.qq(title, description, thumb, url, 0, callback);
+						else if (index === 5) shareTo.qq(title, description, thumb, url, 2, callback);
+						return true;
+					}
+				});
+			} else if (login.wechatIsInstalled()) {
+				$ionicActionSheet.show({
+					titleText: '与朋友们分享',
+					buttons: [
+						{ text: '分享到微信朋友圈' },
+						{ text: '分享到微信好友' },
+						{ text: '收藏到微信' }
+					],
+					buttonClicked: function(index) {
+						if (index === 0) shareTo.wechat(title, description, thumb, url, 1, callback);
+						else if (index === 1) shareTo.wechat(title, description, thumb, url, 0, callback);
+						else if (index === 2) shareTo.wechat(title, description, thumb, url, 2, callback);
+						return true;
+					}
+				});
+			} else if (login.qqIsInstalled()) {
+				$ionicActionSheet.show({
+					titleText: '与朋友们分享',
+					buttons: [
+						{ text: '分享到QQ空间' },
+						{ text: '分享到QQ好友' },
+						{ text: '收藏到QQ' }
+					],
+					buttonClicked: function(index) {
+						if (index === 0) shareTo.qq(title, description, thumb, url, 1, callback);
+						else if (index === 1) shareTo.qq(title, description, thumb, url, 0, callback);
+						else if (index === 2) shareTo.qq(title, description, thumb, url, 2, callback);
+						return true;
+					}
+				});
+			}
+
 		}
 	}
 }]);
