@@ -1,7 +1,7 @@
 //显示消息
 'use strict';
 
-app.factory('msg', ['$ionicLoading', '$ionicPopup', '$timeout', function($ionicLoading, $ionicPopup, $timeout) {
+app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', function($rootScope, $ionicLoading, $ionicPopup, $timeout) {
 	return {
 		//提示消息 s秒后自动隐藏
 		text: function(msg, s) {
@@ -36,7 +36,7 @@ app.factory('msg', ['$ionicLoading', '$ionicPopup', '$timeout', function($ionicL
 		},
 		//弹出消息
 		alert: function(title, text) {
-			var option = { okText: '确定' };
+			var option = { okText: '确定', okType:'button-'+$rootScope.skin };
 			if (title && text) {
 				option['title'] = title;
 				option['template'] = text;
@@ -48,7 +48,7 @@ app.factory('msg', ['$ionicLoading', '$ionicPopup', '$timeout', function($ionicL
 		},
 		//确认消息
 		confirm: function(title, text, okText) {
-			var option = { okText: okText||'确定', cancelText:'取消' };
+			var option = { okText: okText||'确定', okType:'button-'+$rootScope.skin, cancelText:'取消' };
 			if (title && text) {
 				option['title'] = title;
 				option['template'] = text;

@@ -59,6 +59,13 @@ $templateCache.put('setting.html', '\
 				<label>去评分</label>\
 			</label>\
 		</div>\
+		<div class="list" ng-if="$root.admin==1">\
+			<label ion-item class="item item-input item-more" ng-click="go(\'/audit\')">\
+				<i class="ion-ios-arrow-right"></i>\
+				<span class="icon ion-ios-color-filter-outline" style="color:#0000ee"></span>\
+				<label>审核笑话</label>\
+			</label>\
+		</div>\
 		<div class="list">\
 			<label ion-item class="item item-input item-more" ng-click="go(\'/about\')">\
 				<i class="ion-ios-arrow-right"></i>\

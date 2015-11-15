@@ -16,12 +16,12 @@ $templateCache.put('tabs.html', '\
 $templateCache.put('popover.html', '\
 <ion-popover-view class="filter-menu"><ion-content>\
 	<div class="filter-title">排序</div>\
-	<ion-list class="ioslist">\
+	<ion-list class="ioslist left14">\
 		<ion-item ng-click="changeOrder(0)"><span><i ng-if="cid == 0" class="ion-checkmark-round"></i></span> 最新</ion-item>\
 		<ion-item ng-click="changeOrder(1)"><span><i ng-if="cid == 1" class="ion-checkmark-round"></i></span> 最热</ion-item>\
 	</ion-list>\
 	<div class="filter-title">标签</div>\
-	<ion-list class="ioslist">\
+	<ion-list class="ioslist left14">\
 		<ion-item ng-click="changeTag(0)"><span><i ng-if="tid == 0" class="ion-checkmark-round"></i></span> 全部</ion-item>\
 		<ion-item ng-repeat="item in tags" ng-click="changeTag(item.id)"><span><i ng-if="tid == item.id" class="ion-checkmark-round"></i></span> {{item.title}}</ion-item>\
 	</ion-list>\
@@ -74,6 +74,38 @@ $templateCache.put('search.html', '\
 		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
 	</ion-content>\
 </ion-view>\
+');
+
+//审核
+$templateCache.put('audit.html', '\
+<ion-view title="审核">\
+	<ion-nav-buttons side="left">\
+		<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goBack()"></button>\
+	</ion-nav-buttons>\
+	<ion-content>\
+		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
+		<div ion-item class="item-card" ng-repeat="item in list">\
+			<div class="item item-body"><p style="font-size:{{$root.fontSize}}px">{{item.text}}</p></div>\
+			<div class="item item-footer">\
+				<span><a class="item-note" ng-click="showAudit($index)"><i class="icon ion-ios-color-filter-outline"></i> 审核</a></span>\
+				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
+			</div>\
+		</div>\
+		<div ng-if="nodata" class="nodata">暂无数据！</div>\
+		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
+	</ion-content>\
+</ion-view>\
+');
+$templateCache.put('edit.html', '\
+<ion-modal-view>\
+	<ion-header-bar class="bar-{{$root.skin}} bar bar-header">\
+		<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="closeAudit()"></button>\
+		<div class="title">审核</div>\
+	</ion-header-bar>\
+	<ion-content>\
+		test\
+	</ion-content>\
+</ion-modal-view>\
 ');
 
 }]);

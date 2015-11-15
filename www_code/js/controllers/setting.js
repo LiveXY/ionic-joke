@@ -30,52 +30,6 @@ app.controller('settingController', ['$scope', '$rootScope', 'init', 'data', 'co
 		$rootScope[key] = value;
 	}
 }])
-//喜欢
-.controller('likeController', ['$scope', '$rootScope', 'init', 'data', 'msg', 'config', 'util', 'UserService', function($scope, $rootScope, init, data, msg, config, util, UserService) {
-	init.registerBase($scope);
-
-	$scope.$on('$ionicView.afterEnter', function() {
-		if (config.refresh.like) $scope.refresh(1);
-	});
-
-	var currPage = 1, pageSize = 10;
-	$scope.isMore = true;
-	$scope.list = [];
-	$scope.nodata = false;
-
-	$scope.iLike = function(id) {
-		data.checkApi(JokeService.jokeLike(id), function(res) { });
-	}
-	$scope.iCopy = function(text) {
-		if (window.cordova && window.cordova.plugins.clipboard) {
-			cordova.plugins.clipboard.copy(text);
-			msg.text('复制成功！', 1);
-		}
-	}
-	$scope.loadData = function () {
-		data.checkApi(UserService.likes(currPage, pageSize), function(res) {
-			$scope.isMore = res.list.length == pageSize;
-			angular.forEach(res.list, function(item) {
-				item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
-				item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
-				$scope.list.push(item);
-			});
-			$scope.nodata = $scope.list.length == 0;
-		}, function() {
-			$scope.isMore = false;
-		}, function() {
-			if (currPage == 1) $scope.$broadcast('scroll.refreshComplete');
-			currPage++;
-			$scope.$broadcast('scroll.infiniteScrollComplete');
-		});
-	};
-	$scope.refresh = function (r) {
-		config.refresh.like = false;
-		$scope.list = [];
-		currPage = 1;
-		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
-	};
-}])
 //我要反馈
 .controller('feedbackController', ['$scope', 'init', 'data', 'msg', 'UserService', function($scope, init, data, msg, UserService) {
 

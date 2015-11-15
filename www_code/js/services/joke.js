@@ -29,6 +29,24 @@ app.factory('JokeService', ['$http', 'config', 'data', function($http, config, d
 				method: 'jsonp',
 				params: { id: id }
 			});
+		},
+		//审核
+		audit: function(tag) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('audit'),
+				method: 'jsonp',
+				params: { sessionKey: data.get('sessionKey'), tag: tag }
+			});
+		},
+		//审核
+		auditPost: function(id, title, text, tags, score) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('auditPost'),
+				method: 'jsonp',
+				params: { sessionKey: data.get('sessionKey'), id: id, title: title, text: text, tags: tags, score: score }
+			});
 		}
 	};
 }]);

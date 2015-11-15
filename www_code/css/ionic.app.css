@@ -7,6 +7,10 @@ a { text-decoration: none }
 button, input, label, select, textarea { font-size:16px; }
 
 ion-content, ion-modal-view { background-color: #E9E9E9; }
+.popup .button.button-positive { border-color:#44ABB2; background-color:#44ABB2; color: #fff; }
+.pop-alert .popup .popup-head { padding:25px 10px; }
+.popup-container .popup { border-radius: 5px; }
+.bar-header button.ion-ios-arrow-left { padding-right:20px; }
 
 ion-list .list,.list { margin-top:-1px; }
 .ioslist.left45 .list .item:after { left:45px; }
@@ -47,7 +51,13 @@ ion-list .list,.list { margin-top:-1px; }
 .item-card .item-footer .icon { font-size:22px; vertical-align: middle; }
 .item-card .item.item-footer { overflow: inherit; }
 
+.joke-loading { stroke:#fff; }
+.pop-msg { font-size:40px; }
 .nodata { text-align:center; color:#888; margin-top:40%; font-size:14px; }
+.loading { text-align:center; padding:20px; }
+.pane .loading .joke-loading { stroke:#666; }
+.loading-error { text-align:center; color:#888; margin-top:40%; font-size:14px; }
+.loading-error2 { text-align:center; color:#888; margin-top:10%; font-size:14px; }
 
 .feedback-title { font-size:16px; padding:10px; }
 .feedback-text textarea { width:100%; height:150px; padding:10px; resize:none; }

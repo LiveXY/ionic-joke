@@ -73,6 +73,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	.state('upload', { url: '/upload', templateUrl: 'upload.html', controller: 'uploadController' })
 	.state('feedback', { url: '/feedback', templateUrl: 'feedback.html', controller: 'feedbackController' })
 	.state('about', { url: '/about', templateUrl: 'about.html', controller: 'aboutController' })
+	.state('audit', { url: '/audit', templateUrl: 'audit.html', controller: 'auditController' })
 	.state('version', { url: '/version', templateUrl: 'version.html', controller: 'versionController' });
 }])
 //配置白名单

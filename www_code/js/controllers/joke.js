@@ -22,8 +22,8 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 
 	//popover
 	$scope.cid = 0; $scope.tid = 0;
-	$scope.changeTag = function(index) { $scope.tid = index; $scope.refresh(); $scope.popover.hide(); };
-	$scope.changeOrder = function(index) { $scope.cid = index; $scope.refresh(); $scope.popover.hide(); };
+	$scope.changeTag = function(index) { $scope.tid = index; $scope.refresh(1); $scope.popover.hide(); };
+	$scope.changeOrder = function(index) { $scope.cid = index; $scope.refresh(1); $scope.popover.hide(); };
 	$scope.popover = $ionicPopover.fromTemplateUrl('popover.html', { scope: $scope }).then(function(popover) { $scope.popover = popover; });
 	$scope.openPopover = function($event) { $scope.popover.show($event); };
 
@@ -52,7 +52,12 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 				$scope.list.push(item);
 			});
 			$scope.nodata = $scope.list.length == 0;
-			if (res.tags && !$scope.tags) $scope.tags = res.tags;
+			if (res.tags && !$scope.tags) {
+				angular.forEach(res.tags, function(item) {
+					item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+				});
+				$scope.tags = res.tags;
+			}
 		}, function() {
 			$scope.isMore = false;
 		}, function() {
@@ -68,7 +73,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	};
 }])
 //搜索
-.controller('searchController', ['$scope', '$rootScope', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($scope, $rootScope, util, init, msg, data, config, JokeService) {
+.controller('searchController', ['$timeout', '$scope', '$rootScope', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
 
 	var currPage = 1;
@@ -117,11 +122,125 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.opClick = function() {
 		if ($scope.searchState == 0) $scope.goBack();
 		else if($scope.searchState == 1) {
+			$timeout(function(){ $scope.searchState = 0; });
 			currPage = 1;
 			$scope.list = [];
 			$scope.scrollTop();
 			$scope.loadData();
-			$scope.searchState = 0;
 		}
 	}
+}])
+//喜欢
+.controller('likeController', ['$scope', '$rootScope', 'init', 'data', 'msg', 'config', 'util', 'UserService', function($scope, $rootScope, init, data, msg, config, util, UserService) {
+	init.registerBase($scope);
+
+	$scope.$on('$ionicView.afterEnter', function() {
+		if (config.refresh.like) $scope.refresh(1);
+	});
+
+	var currPage = 1, pageSize = 10;
+	$scope.isMore = true;
+	$scope.list = [];
+	$scope.nodata = false;
+
+	$scope.iLike = function(id) {
+		data.checkApi(JokeService.jokeLike(id), function(res) { });
+	}
+	$scope.iCopy = function(text) {
+		if (window.cordova && window.cordova.plugins.clipboard) {
+			cordova.plugins.clipboard.copy(text);
+			msg.text('复制成功！', 1);
+		}
+	}
+	$scope.loadData = function () {
+		data.checkApi(UserService.likes(currPage, pageSize), function(res) {
+			$scope.isMore = res.list.length == pageSize;
+			angular.forEach(res.list, function(item) {
+				item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
+				item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+				$scope.list.push(item);
+			});
+			$scope.nodata = $scope.list.length == 0;
+		}, function() {
+			$scope.isMore = false;
+		}, function() {
+			if (currPage == 1) $scope.$broadcast('scroll.refreshComplete');
+			currPage++;
+			$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+	$scope.refresh = function (r) {
+		config.refresh.like = false;
+		$scope.list = [];
+		currPage = 1;
+		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
+	};
+}])
+//审核
+.controller('auditController', ['$timeout', '$scope', '$rootScope', '$ionicModal', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, $ionicModal, util, init, msg, data, config, JokeService) {
+	init.registerBase($scope);
+
+	$scope.joke = null; var index = 0;
+	$ionicModal.fromTemplateUrl('edit.html', function(modal) { $scope.modelAudit = modal; }, { scope: $scope, animation: 'slide-in-up' });
+	$scope.showAudit = function(i) {
+		index = i;
+		$scope.joke = $scope.list[i];
+		$timeout(function(){ $scope.modelAudit.show(); });
+	};
+	$scope.closeAudit = function() { $scope.modelAudit.hide(); };
+	$scope.auditPost = function(reg) {
+		if ($scope.joke.id && $scope.joke.title && $scope.joke.text && $scope.joke.tags && $scope.joke.score) {
+			msg.loading('正在提交数据...');
+			data.checkApi(JokeService.auditPost($scope.joke.id, $scope.joke.title, $scope.joke.text, $scope.joke.tags, $scope.joke.score), function(res){
+				$scope.joke = null;
+				$scope.list.splice(index, 1);
+				config.refresh.joke = true;
+			}, null, function(){ msg.hide(); });
+		}
+	};
+
+	$scope.isMore = true;
+	$scope.list = []; $scope.tags = null;
+	$scope.nodata = false;
+
+	$scope.iCopy = function(text) {
+		if (window.cordova && window.cordova.plugins.clipboard) {
+			cordova.plugins.clipboard.copy(text);
+			msg.text('复制成功！', 1);
+		}
+	}
+	$scope.loadData = function () {
+		data.checkApi(JokeService.audit($scope.tags ? 0 : 1), function(res) {
+			$scope.isMore = res.list.length == 10;
+			angular.forEach(res.list, function(item) {
+				var exist = false;
+				for(var i in $scope.list) {
+					if ($scope.list[i].id == item.id) { exist = true; break; }
+				}
+				if (!exist) {
+					item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
+					item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+					$scope.list.push(item);
+				}
+			});
+			$scope.nodata = $scope.list.length == 0;
+			if (res.tags && !$scope.tags) {
+				angular.forEach(res.tags, function(item) {
+					item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
+				});
+				$scope.tags = res.tags;
+			}
+		}, function() {
+			$scope.isMore = false;
+		}, function() {
+			if (currPage == 1) $scope.$broadcast('scroll.refreshComplete');
+			currPage++;
+			$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+	$scope.refresh = function (r) {
+		config.refresh.like = false;
+		$scope.list = [];
+		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
+	};
 }]);
