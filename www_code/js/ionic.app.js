@@ -129,7 +129,6 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 			if (u && u.update==1 && navigator.connection) { $location.path('/version'); return false; }
 			init.setJPushTagsAndAlias();
 			$location.path('/tabs/joke');
-			//$location.path('/tabs/setting');
 		});
 	});
 }]);

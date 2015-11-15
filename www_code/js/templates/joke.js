@@ -16,11 +16,11 @@ $templateCache.put('tabs.html', '\
 $templateCache.put('popover.html', '\
 <ion-popover-view class="filter-menu"><ion-content>\
 	<div class="filter-title">排序</div>\
-	<ion-list class="ioslist left14">\
+	<ion-list class="ioslist left14 mb0">\
 		<ion-item ng-click="changeOrder(0)"><span><i ng-if="cid == 0" class="ion-checkmark-round"></i></span> 最新</ion-item>\
 		<ion-item ng-click="changeOrder(1)"><span><i ng-if="cid == 1" class="ion-checkmark-round"></i></span> 最热</ion-item>\
 	</ion-list>\
-	<div class="filter-title">标签</div>\
+	<div class="filter-title">分类</div>\
 	<ion-list class="ioslist left14">\
 		<ion-item ng-click="changeTag(0)"><span><i ng-if="tid == 0" class="ion-checkmark-round"></i></span> 全部</ion-item>\
 		<ion-item ng-repeat="item in tags" ng-click="changeTag(item.id)"><span><i ng-if="tid == item.id" class="ion-checkmark-round"></i></span> {{item.title}}</ion-item>\
@@ -76,6 +76,24 @@ $templateCache.put('search.html', '\
 </ion-view>\
 ');
 
+//喜欢
+$templateCache.put('like.html', '\
+<ion-view title="喜欢">\
+	<ion-content>\
+		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
+		<div ion-item class="item-card" ng-repeat="item in list">\
+			<div class="item item-body"><p style="font-size:{{$root.fontSize}}px">{{item.text}}</p></div>\
+			<div class="item item-footer">\
+				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
+				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
+			</div>\
+		</div>\
+		<div ng-if="nodata" class="nodata">你还没有喜欢的笑话和美图！</div>\
+		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
+	</ion-content>\
+</ion-view>\
+');
+
 //审核
 $templateCache.put('audit.html', '\
 <ion-view title="审核">\
@@ -103,7 +121,15 @@ $templateCache.put('edit.html', '\
 		<div class="title">审核</div>\
 	</ion-header-bar>\
 	<ion-content>\
-		test\
+		<div class="audit-title">标题：</div>\
+		<div class="audit-edit"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
+		<div class="audit-title">内容：</div>\
+		<div class="audit-edit"><textarea type="text" ng-model="joke.text" placeholder="请输入您的内容"></textarea></div>\
+		<div class="audit-title">标签：</div>\
+		<div class="audit-edit"><ion-tags source="tags" ng-model="joke.tags"></ion-tags></div>\
+		<div class="audit-title">评分：{{joke.score}}</div>\
+		<div class="audit-edit item range range-{{$root.skin}}"><input type="range" ng-model="joke.score" min="1" max="100"></div>\
+		<div class="padding"><button class="button button-block" ng-click="auditPost()">提交意见</button></div>\
 	</ion-content>\
 </ion-modal-view>\
 ');

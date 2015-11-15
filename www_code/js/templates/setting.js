@@ -3,24 +3,6 @@
 
 app.run(['$templateCache', function($templateCache) {
 
-//喜欢
-$templateCache.put('like.html', '\
-<ion-view title="喜欢">\
-	<ion-content>\
-		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
-		<div ion-item class="item-card" ng-repeat="item in list">\
-			<div class="item item-body"><p style="font-size:{{$root.fontSize}}px">{{item.text}}</p></div>\
-			<div class="item item-footer">\
-				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
-				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
-			</div>\
-		</div>\
-		<div ng-if="nodata" class="nodata">你还没有喜欢的笑话和美图！</div>\
-		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
-	</ion-content>\
-</ion-view>\
-');
-
 //设置
 $templateCache.put('setting.html', '\
 <ion-view class="mine" title="设置">\

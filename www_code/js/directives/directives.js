@@ -13,7 +13,8 @@ app.directive('imgLoaded', [
 			}
 		}
 	}
-]).directive('ionItem', ["$timeout",
+])
+.directive('ionItem', ["$timeout",
 	function ($timeout) {
 		return {
 			restrict: 'AE',
@@ -27,7 +28,56 @@ app.directive('imgLoaded', [
 			}
 		}
 	}
-]).directive('likeAnimated', ["$timeout", "util",
+])
+.directive('ionTags', ['$timeout', '$parse', function($timeout, $parse){
+	return {
+		restrict: 'AE',
+		replace: true,
+		scope : {
+			source : "=",
+			ngModel : "="
+		},
+		require: 'ngModel',
+		template: '<div class="ion-tags clearfix"></div>',
+		link: function(scope, element, attrs, ngModelController) {
+			var data = [];
+			scope.$watch('source',function(value) {
+				if (!value) return false;
+				console.log('source', value);
+				for(var i in value)  element.append(itemT.format(value[i].id, value[i].title));
+				childs = element.children();
+				angular.forEach(childs, function(item) {
+					angular.element(item).bind('click', function (e) {
+						var me = angular.element(this);
+						if (me.hasClass('active')) {
+							me.removeClass('active');
+							var id = me.attr('tid');
+							var index = data.indexOf(id);
+							if (index != -1) data.splice(index, 1);
+						} else {
+							me.addClass('active');
+							var id = me.attr('tid');
+							if (data.indexOf(id) == -1) data.push(id);
+						}
+						ngModelController.$setViewValue(data);
+					});
+				});
+			});
+			scope.$watch('ngModel',function(value) {
+				if (!value) return false;
+				data = value;
+				angular.forEach(childs, function(item) {
+					var me = angular.element(item), tid = me.attr('tid');
+					angular.forEach(value, function(id) {
+						if (id == tid) me.addClass('active');
+					});
+				});
+			});
+			var childs = null, itemT = '<a class="tag" tid="{0}">{1}</a>';
+		}
+	}
+}])
+.directive('likeAnimated', ["$timeout", "util",
 	function ($timeout, util) {
 		var index = 0;
 		return {
