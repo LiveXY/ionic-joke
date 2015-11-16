@@ -6,7 +6,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 .constant('config', {
 	vid: 100, vname: 'v1.0.0', bundleid: 'com.livexy.joke',
 	refresh: {},
-	api: 'http://joke.relaxlife.net/app/{0}?callback=JSON_CALLBACK',
+	api: 'http://joke2.5alife.cn/app/{0}?callback=JSON_CALLBACK',
 	apiTimeout: 30 * 1000
 })
 //全局配置
@@ -80,8 +80,8 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 .config(['$sceDelegateProvider', function($sceDelegateProvider) {
 	$sceDelegateProvider.resourceUrlWhitelist([
 		'self',
-		'https://joke.relaxlife.net/*',
-		'http://joke.relaxlife.net/*'
+		'https://joke2.5alife.cn/*',
+		'http://joke2.5alife.cn/*'
 	]);
 }])
 //启动
