@@ -61,13 +61,14 @@ app.factory('UserService', ['$http', 'config', 'data', function($http, config, d
 			var user = data.getObject('user');
 
 			var uuid = user && user.username ? user.username : (window['device'] && device.uuid ? device.uuid : 'test1');
+			var uname = window['device'] && device.uname ? device.uname : 'test1';
 			var network = navigator.connection && navigator.connection.type ? navigator.connection.type : 'none';
-			console.log(user.uid, uuid, network, pf, config.bundleid, config.vid, config.vname);
+			console.log(user.uid, uuid, network, pf, config.bundleid, config.vid, config.vname, uname);
 			return $http({
 				timeout: config.apiTimeout,
 				url: config.api.format('auth'),
 				method: 'jsonp',
-				params: { platform: pf, uuid: uuid, locale: 'zh_CN', bundleid: config.bundleid, ver: config.vname, vid: config.vid, network: network }
+				params: { platform: pf, uuid: uuid, locale: 'zh_CN', bundleid: config.bundleid, ver: config.vname, vid: config.vid, network: network, uname: uname }
 			});
 		},
 		logout: function() {
