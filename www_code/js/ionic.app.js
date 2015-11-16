@@ -12,7 +12,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 //全局配置
 .config(['$ionicConfigProvider', function($ionicConfigProvider) {
 	$ionicConfigProvider.views.swipeBackEnabled(false);
-	$ionicConfigProvider.platform.android.scrolling.jsScrolling(true);
+	//$ionicConfigProvider.platform.android.scrolling.jsScrolling(true);
 
 	$ionicConfigProvider.platform.ios.tabs.style('standard');
 	$ionicConfigProvider.platform.ios.tabs.position('bottom');

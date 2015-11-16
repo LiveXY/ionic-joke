@@ -59,7 +59,6 @@ sudo ionic build ios
 ```
 sudo cordova plugin add com.ionic.keyboard
 sudo cordova plugin add cordova-plugin-console
-sudo cordova plugin add cordova-plugin-device
 sudo cordova plugin add cordova-plugin-splashscreen
 sudo cordova plugin add cordova-plugin-whitelist
 sudo cordova plugin add cordova-plugin-statusbar

@@ -244,6 +244,11 @@ module.exports = [
         "clobbers": [
             "window.plugins.jPushPlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "id": "cordova-plugin-whitelist.whitelist",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -260,7 +265,8 @@ module.exports.metadata =
     "com.verso.cordova.clipboard": "0.1.0",
     "com.livexy.core": "1.0.0",
     "cordova-plugin-device": "1.0.1",
-    "cn.jpush.phonegap.JPushPlugin": "2.0.2"
+    "cn.jpush.phonegap.JPushPlugin": "2.0.2",
+    "cordova-plugin-whitelist": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

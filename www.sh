@@ -77,10 +77,10 @@ cp -f "$wwwPath/ionic.app.min.js" "$currPath/jokeApp/platforms/android/assets/ww
 cp -f "$wwwPath/ionic.app.min.css" "$currPath/jokeApp/platforms/android/assets/www/"
 rm -f "$currPath/jokeApp/platforms/android/assets/www.zip"
 cd "$currPath/jokeApp/platforms/android/assets/"
-echo '文件已复制到各平台！'
-cd "$currPath/jokeApp"
 zip -r www.zip www/
+echo '文件已复制到各平台！'
 
+cd "$currPath/jokeApp"
 if [ "$param" == 'b' ] && [ "$pf" == '' ]; then
 	# 编译各平台
 	sudo ionic build android

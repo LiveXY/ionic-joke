@@ -1,13 +1,10 @@
 package com.livexy.core;
 
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 
 public class AppCore extends CordovaPlugin {
 
@@ -17,7 +14,14 @@ public class AppCore extends CordovaPlugin {
 
 		if (action.equals("setRootPath")) {
 
-			System.out.println("哈哈哈哈哈哈哈哈哈哈哈哈哈哈===》"+args.toString());
+			String urlString = args.toString().substring(2, args.toString().indexOf("\"]"));
+			System.out.println("========接收到更新啦========》" + urlString);
+
+			//从新刷新UI
+			CordovaActivity cActivity = (CordovaActivity) this.cordova.getActivity();
+			cActivity.loadUrl(urlString);
+
+			callbackContext.success();
 
         } else {
             return false;

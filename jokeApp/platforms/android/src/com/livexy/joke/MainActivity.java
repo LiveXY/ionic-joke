@@ -17,11 +17,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 public class MainActivity extends CordovaActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//loadUrl(launchUrl);
+		//Toast.makeText(this, getFilesDir().toString() + "/www", Toast.LENGTH_LONG).show();
 		isExistFiles(getFilesDir().toString() + "/www");
 	}
 
@@ -34,9 +37,11 @@ public class MainActivity extends CordovaActivity {
 	public void isExistFiles(String path) {
 		File file = new File(path);
 		if (!file.exists()) {
+			//Toast.makeText(this, getFilesDir().toString() + "/www 不存在", Toast.LENGTH_LONG).show();
 			CopyFilesTask task = new CopyFilesTask();
 			task.execute();
 		} else {
+			//Toast.makeText(this, getFilesDir().toString() + "/www 存在 直接显示", Toast.LENGTH_LONG).show();
 			loadUrl("file://" + getFilesDir().toString() + "/www/index.html");
 		}
 	}
@@ -52,6 +57,7 @@ public class MainActivity extends CordovaActivity {
 				MainActivity.unZip(MainActivity.this, "www.zip", getFilesDir().toString());
 			} catch (IOException e) {
 				e.printStackTrace();
+				//Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
 			}
 			return null;
 		}
@@ -62,6 +68,7 @@ public class MainActivity extends CordovaActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
+			//Toast.makeText(MainActivity.this, getFilesDir().toString() + "/www 解压成功 加载", Toast.LENGTH_LONG).show();
 			loadUrl("file://" + getFilesDir().toString() + "/www/index.html");
 		}
 	}

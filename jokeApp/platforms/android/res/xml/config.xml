@@ -35,6 +35,10 @@
     <feature name="JPushPlugin">
         <param name="android-package" value="cn.jpush.phonegap.JPushPlugin" />
     </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="Zip">
         <param name="android-package" value="org.apache.cordova.Zip" />
     </feature>

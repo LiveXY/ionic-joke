@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"JPushPlugin\"><param name=\"android-package\" value=\"cn.jpush.phonegap.JPushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -196,6 +200,9 @@
             "PACKAGE_NAME": "com.livexy.joke"
         },
         "cn.jpush.phonegap.JPushPlugin": {
+            "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.livexy.joke"
         }
     },

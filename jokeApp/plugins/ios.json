@@ -201,6 +201,9 @@
         },
         "cn.jpush.phonegap.JPushPlugin": {
             "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.livexy.joke"
         }
     },
     "dependent_plugins": {}
