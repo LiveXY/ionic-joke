@@ -134,7 +134,7 @@ $templateCache.put('edit.html', '\
 	</ion-header-bar>\
 	<ion-content>\
 		<div class="audit-title">内容：</div>\
-		<div class="audit-edit"><textarea type="text" ng-model="joke.text" placeholder="请输入您的内容"></textarea></div>\
+		<div class="audit-edit"><textarea type="text" ng-model="joke.text2" placeholder="请输入您的内容"></textarea></div>\
 		<div class="audit-title">标题：</div>\
 		<div class="audit-edit"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
 		<div class="audit-title">标签：</div>\
