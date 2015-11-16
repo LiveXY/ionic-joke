@@ -41,8 +41,8 @@ $templateCache.put('joke.html', '\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
 		<div ion-item class="item-card" ng-repeat="item in list">\
 			<div class="item item-body">\
-				<div style="font-size:{{$root.fontSize}}px;text-align:center;">{{item.title}}</div>\
-				<p style="font-size:{{$root.fontSize}}px">{{item.text}}</p>\
+				<div style="font-size:{{$root.fontSize}}px;text-align:center;" ng-if="item.title!=\'\'">{{item.title}}</div>\
+				<p style="font-size:{{$root.fontSize}}px" data-ng-bind-html="item.text | safeHtml"></p>\
 			</div>\
 			<div class="item item-footer">\
 				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
@@ -68,8 +68,8 @@ $templateCache.put('search.html', '\
 	<ion-content>\
 		<div ion-item class="item-card" ng-repeat="item in list">\
 			<div class="item item-body">\
-				<div style="font-size:{{$root.fontSize}}px;text-align:center;">{{item.title}}</div>\
-				<p style="font-size:{{$root.fontSize}}px">{{item.text}}</p>\
+				<div style="font-size:{{$root.fontSize}}px;text-align:center;" ng-if="item.title!=\'\'">{{item.title}}</div>\
+				<p style="font-size:{{$root.fontSize}}px" data-ng-bind-html="item.text | safeHtml"></p>\
 			</div>\
 			<div class="item item-footer">\
 				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
@@ -89,8 +89,8 @@ $templateCache.put('like.html', '\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
 		<div ion-item class="item-card" ng-repeat="item in list">\
 			<div class="item item-body">\
-				<div style="font-size:{{$root.fontSize}}px;text-align:center;">{{item.title}}</div>\
-				<p style="font-size:{{$root.fontSize}}px">{{item.text}}</p>\
+				<div style="font-size:{{$root.fontSize}}px;text-align:center;" ng-if="item.title!=\'\'">{{item.title}}</div>\
+				<p style="font-size:{{$root.fontSize}}px" data-ng-bind-html="item.text | safeHtml"></p>\
 			</div>\
 			<div class="item item-footer">\
 				<span><a class="item-note" like-animated="likeAnimated fadeOutUp" ng-click="iLike(item.id)"><i class="icon ion-ios-heart-outline"></i> 喜欢</a></span>\
@@ -112,10 +112,13 @@ $templateCache.put('audit.html', '\
 	<ion-content>\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
 		<div ion-item class="item-card" ng-repeat="item in list">\
-			<div class="item item-body"><p style="font-size:{{$root.fontSize}}px">{{item.text}}</p></div>\
+			<div class="item item-body">\
+				<p style="font-size:{{$root.fontSize}}px" data-ng-bind-html="item.text | safeHtml"></p>\
+			</div>\
 			<div class="item item-footer">\
-				<span><a class="item-note" ng-click="showAudit($index)"><i class="icon ion-ios-color-filter-outline"></i> 审核</a></span>\
-				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
+				<a class="item-note" ng-click="showAudit($index)"><i class="icon ion-ios-color-filter-outline"></i> 审核</a>\
+				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>　　\
+				<a ng-click="auditDelete($index)"><i class="icon ion-ios-close-outline"></i> 删除</a>\
 			</div>\
 		</div>\
 		<div ng-if="nodata" class="nodata">暂无数据！</div>\
@@ -130,10 +133,10 @@ $templateCache.put('edit.html', '\
 		<div class="title">审核</div>\
 	</ion-header-bar>\
 	<ion-content>\
-		<div class="audit-title">标题：</div>\
-		<div class="audit-edit"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
 		<div class="audit-title">内容：</div>\
 		<div class="audit-edit"><textarea type="text" ng-model="joke.text" placeholder="请输入您的内容"></textarea></div>\
+		<div class="audit-title">标题：</div>\
+		<div class="audit-edit"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
 		<div class="audit-title">标签：</div>\
 		<div class="audit-edit"><ion-tags source="tags" ng-model="joke.tags"></ion-tags></div>\
 		<div class="audit-title">评分：{{joke.score}}</div>\

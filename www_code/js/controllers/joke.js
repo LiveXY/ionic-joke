@@ -160,10 +160,10 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	};
 	$scope.closeAudit = function() { $scope.modelAudit.hide(); };
 	$scope.auditPost = function(reg) {
-		if (util.empty($scope.joke.title)) return msg.text('标题不能为空！', 1);
+		//if (util.empty($scope.joke.title)) return msg.text('标题不能为空！', 1);
 		if (util.empty($scope.joke.text)) return msg.text('内容不能为空！', 1);
 		if (util.empty($scope.joke.tags)) return msg.text('请选择标签！', 1);
-		if ($scope.joke.id && $scope.joke.title && $scope.joke.text && $scope.joke.tags && $scope.joke.score) {
+		if ($scope.joke.id && $scope.joke.text && $scope.joke.tags && $scope.joke.score) {
 			msg.loading('正在提交数据...');
 			data.checkApi(JokeService.auditPost($scope.joke.id, $scope.joke.title, $scope.joke.text, $scope.joke.tags, $scope.joke.score), function(res){
 				$scope.joke = null;
@@ -172,6 +172,19 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 				$scope.closeAudit();
 			}, null, function(){ msg.hide(); });
 		}
+	};
+	$scope.auditDelete = function(i) {
+		var id = $scope.list[i].id;
+		msg.confirm('是否删除？').then(function(res) {
+			if(res) {
+				msg.loading('正在删除...');
+				data.checkApi(JokeService.auditDelete(id), function(res) {
+					$scope.list.splice(index, 1);
+				}, null, function() {
+					msg.hide();
+				});
+			}
+		});
 	};
 
 	$scope.isMore = true;

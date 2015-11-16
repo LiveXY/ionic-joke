@@ -39,6 +39,15 @@ app.factory('JokeService', ['$http', 'config', 'data', function($http, config, d
 				params: { sessionKey: data.get('sessionKey'), tag: tag }
 			});
 		},
+		//删除
+		auditDelete: function(id) {
+			return $http({
+				timeout: config.apiTimeout,
+				url: config.api.format('auditDelete'),
+				method: 'jsonp',
+				params: { sessionKey: data.get('sessionKey'), id: id }
+			});
+		},
 		//审核
 		auditPost: function(id, title, text, tags, score) {
 			var code = ''; if (tags && Array.isArray(tags)) for(var i in tags) code += tags[i] + ';';
