@@ -71,7 +71,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 }])
 //启动
 .run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util) {
-	$rootScope.fontSize = data.get('fontSize') || '14';
+	$rootScope.fontSize = data.get('fontSize') || '16';
 	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 	$rootScope.skin = $rootScope.openNight ? 'dark' : (data.get('skin') || 'assertive');
 

@@ -5,11 +5,11 @@
 app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init', 'data', 'config', function($timeout, $scope, $rootScope, init, data, config) {
 	init.registerBase($scope);
 
-	$rootScope.fontSize = data.get('fontSize') || '14';
+	$rootScope.fontSize = data.get('fontSize') || '16';
 	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 
 	$scope.$on('$ionicView.afterEnter', function() {
-		$rootScope.fontSize = data.get('fontSize') || '14';
+		$rootScope.fontSize = data.get('fontSize') || '16';
 		$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 		if(window.cordova && window.cordova.plugins.Keyboard)
 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);

@@ -13,10 +13,10 @@ $templateCache.put('setting.html', '\
 				<span class="icon ion-ios-at-outline" style="color:#4DCEEB;font-size:35px;"></span>\
 				<label>字体大小</label>\
 				<select ng-model="$root.fontSize" ng-change="saveSetting(\'fontSize\', $root.fontSize)">\
-					<option value="18">特大</option>\
-					<option value="16">大</option>\
-					<option value="14">中</option>\
-					<option value="12">小</option>\
+					<option value="20">特大</option>\
+					<option value="18">大</option>\
+					<option value="16">中</option>\
+					<option value="14">小</option>\
 				</select>\
 			</label>\
 			<ion-toggle ng-model="$root.openNight" ng-checked="$root.openNight" ng-change="saveSetting(\'openNight\', $root.openNight)" toggle-class="toggle-{{$root.skin}}">\
