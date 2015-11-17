@@ -2,13 +2,6 @@
 'use strict';
 
 var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova'])
-//配置基础数据
-.constant('config', {
-	vid: 100, vname: 'v1.0.0', bundleid: 'com.livexy.joke',
-	refresh: {},
-	api: 'http://joke2.5alife.cn/app/{0}?callback=JSON_CALLBACK',
-	apiTimeout: 30 * 1000
-})
 //全局配置
 .config(['$ionicConfigProvider', function($ionicConfigProvider) {
 	$ionicConfigProvider.views.swipeBackEnabled(false);
@@ -75,14 +68,6 @@ var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova
 	.state('about', { url: '/about', templateUrl: 'about.html', controller: 'aboutController' })
 	.state('audit', { url: '/audit', templateUrl: 'audit.html', controller: 'auditController' })
 	.state('version', { url: '/version', templateUrl: 'version.html', controller: 'versionController' });
-}])
-//配置白名单
-.config(['$sceDelegateProvider', function($sceDelegateProvider) {
-	$sceDelegateProvider.resourceUrlWhitelist([
-		'self',
-		'https://joke2.5alife.cn/*',
-		'http://joke2.5alife.cn/*'
-	]);
 }])
 //启动
 .run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util) {
