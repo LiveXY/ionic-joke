@@ -68,8 +68,9 @@ app.directive('imgLoaded', [
 				data = value;
 				angular.forEach(childs, function(item) {
 					var me = angular.element(item), tid = me.attr('tid');
+					me.removeClass('active');
 					angular.forEach(value, function(id) {
-						if (id == tid) me.addClass('active'); else me.removeClass('active');
+						if (id == tid) me.addClass('active');
 					});
 				});
 			});
