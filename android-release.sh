@@ -6,6 +6,8 @@ pf=$2
 if [ "$pf" != '' ]; then
 	./www.sh "$param" "$pf"
 	pf=".$pf"
+elif [ "$param" == 'b' ]; then
+	./www.sh
 fi
 
 currPath=$(pwd)
@@ -25,6 +27,8 @@ if [ "$param" == 'b' ]; then
 	# 签名，使用 tsa 保证时间
 	sudo jarsigner -tsa http://timestamp.digicert.com -sigalg SHA1withRSA -digestalg SHA1 -keystore "$androidPath/joke-android.keystore" -storepass zzjoke -signedjar "$androidPath/build/outputs/apk/android-release-signed.apk" "$androidPath/build/outputs/apk/android-release-unsigned.apk" joke
 
+	sudo chmod -R a+rw "$androidPath/build/outputs/apk/android-release-signed.apk"
+	zip -d "$androidPath/build/outputs/apk/android-release-signed.apk" "assets/www/*"
 	echo "正在优化apk文件..."
 	# 对齐，减小内存使用，必须在签名后完成
 	# 使用 google 提供的高压缩比 zlib
