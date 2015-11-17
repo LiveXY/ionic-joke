@@ -111,7 +111,26 @@ $templateCache.put('about.html', '\
 	<ion-nav-buttons side="left">\
 		<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goBack()"></button>\
 	</ion-nav-buttons>\
-	<ion-content>\
+	<ion-content class="ioslist left14">\
+		<div class="about-title"><img src="img/icon.png" /><br/>猪猪笑话</div>\
+		<div class="list">\
+			<label ion-item class="item item-input">\
+				版本：{{vname}}\
+			</label>\
+		</div>\
+		<div class="about-support">我们将打造内容丰富、无广告的开源笑话软件，如果您对我们的项目感兴趣请捐助支持我们：</div>\
+		<div class="list">\
+			<label ion-item class="item item-input" ng-click="iCopy(\'https://github.com/livexy\')">\
+				开源：https://github.com/livexy\
+			</label>\
+			<label ion-item class="item item-input" ng-click="iCopy(\'cexo255@163.com\')">\
+				支付宝：cexo255@163.com\
+			</label>\
+			<label ion-item class="item item-input" ng-click="iCopy(\'cexo255\')">\
+				微信：cexo255\
+			</label>\
+		</div>\
+		<div class="about-tip">本软件中的内容均来自互联网，如果您对本软件内容有疑问，也请联系我，我会及时回复的！联系邮箱：cexo255@qq.com</div>\
 	</ion-content>\
 </ion-view>\
 ');

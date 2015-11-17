@@ -88,6 +88,11 @@ ion-list .list,.list { margin-top:-1px; }
 .search-box { background-color:transparent; }
 .platform-ios .search-box { margin-top:-20px; }
 
+.about-title { text-align: center; font-size:16px; color:#f00; padding:20px; }
+.about-title img { width:80px; height:80px; }
+.about-support { padding:0px 10px 5px 10px; }
+.about-tip { padding:16px; }
+
 .joke ion-header-bar.header-transparent,
 .header-transparent { background-image:none; }
 .header-transparent .button-clear.button-clear { color:#fff; }
@@ -185,6 +190,8 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .ion-tags a {background-color:#293039; border:1px solid #111; color:#747884; }
 .joke.dark .ion-tags a.active { background-color:#d00; border: 1px solid #f00; color:#fff; }
 .joke.dark .audit-title { color:#747884; background-color:#20262E; }
+.joke.dark .about-support,
+.joke.dark .about-tip,
 .joke.dark .feedback-title { color:#747884; }
 .joke.dark .audit-edit { border-bottom:1px solid #111; }
 .joke.dark .audit-edit input,

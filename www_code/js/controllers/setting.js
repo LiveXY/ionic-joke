@@ -80,6 +80,7 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 //关于我们
 .controller('aboutController', ['$scope', 'init', 'config', function($scope, init, config) {
 	init.registerBase($scope);
+	$scope.vname = config.vname;
 }])
 //版本更新
 .controller('versionController', ['$scope', '$rootScope', 'init', 'config', 'data', 'UserService', 'update', function($scope, $rootScope, init, config, data, UserService, update) {
