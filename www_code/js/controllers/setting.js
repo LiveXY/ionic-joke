@@ -17,7 +17,7 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 
 	$scope.goStore = function() {
 		var url = '';
-		if (ionic.Platform.isIOS() || ionic.Platform.isIPad()) url = 'itms-apps://itunes.apple.com/us/app/dared/id?ls=1&mt=8';
+		if (ionic.Platform.isIOS() || ionic.Platform.isIPad()) url = 'itms-apps://itunes.apple.com/us/app/dared/id1059711002?ls=1&mt=8';
 		if (ionic.Platform.isAndroid()) url = 'market://details?id='+config.bundleid.split('-')[0];
 		if (url) window.open(url, '_system');
 	}

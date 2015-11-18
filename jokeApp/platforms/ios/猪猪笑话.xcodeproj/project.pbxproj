@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00D2D2D0D2F34C9186F0BBE1 /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C978B56EDE4B108B5ECDFE /* CDVConnection.m */; };
 		029FA4F16434468D894242BE /* CDVAppCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 098143E56A504131BF1F5032 /* CDVAppCore.m */; };
@@ -37,6 +38,7 @@
 		33D1C7178ABF4EC7B6731BED /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2289DD564B574C62B324580E /* PushConfig.plist */; };
 		374C53648165439B995806C6 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56FD5135BA4005A7FE88FD /* CDVLocalFilesystem.m */; };
 		3C5323B7F9AD498EB36388C2 /* DeviceInfoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0508155AEFC746768336C7FC /* DeviceInfoHelper.m */; };
+		3CADE2371B95522F000132BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CADE2391B95522F000132BF /* Localizable.strings */; };
 		3D14E7D2A6D0449C95E00259 /* ZipPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CE2C114B11496096DC4602 /* ZipPlugin.m */; };
 		3D975BFBD82740CEA9F93F4A /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14C76680F74589B156BA57 /* CDVLogger.m */; };
 		53B728AAE06B4080874FA04E /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19977BDE3C3F459FB84A80FB /* CDVStatusBar.m */; };
@@ -74,7 +76,6 @@
 		FAA4489EEC87465582E2585D /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 477359706A1F48D1A8E276BB /* CDVReachability.m */; };
 		FE57E8F17DCA42F39E2C621E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EE7E9686324399A2B56394 /* CDVDevice.m */; };
 		FE5F59782BAF4F8A99DF8373 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92972A7FD99440059C2A97B4 /* libz.dylib */; };
-		3CADE2371B95522F000132BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3CADE2391B95522F000132BF /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,8 @@
 		37A3552D308243B298BED870 /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = "org.apache.cordova.file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; };
 		39B4E6F5BAB444E785ED4F4D /* ZipPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipPlugin.h; path = "cordova-plugin-zip/ZipPlugin.h"; sourceTree = "<group>"; };
 		3C332A2C222B49FEAA6BCD87 /* Security.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3CADE2381B95522F000132BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3CADE23A1B95523B000132BF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		410F0CE5D91943A3AD826661 /* CDVAppCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVAppCore.h; path = com.livexy.core/CDVAppCore.h; sourceTree = "<group>"; };
 		41D6BDF403E4427C98E4BA7F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = "cordova-plugin-zip/Plugins/minizip/ioapi.h"; sourceTree = "<group>"; };
 		44DB8EE382C644F0AE3A4477 /* CDVReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVReachability.h; path = "org.apache.cordova.network-information/CDVReachability.h"; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 		5C56FD5135BA4005A7FE88FD /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLocalFilesystem.m; path = org.apache.cordova.file/CDVLocalFilesystem.m; sourceTree = "<group>"; };
 		5F1DA0B7EC314E1E99496D65 /* CoreFoundation.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		61945E878E3D4DDC84B27C3D /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = "cordova-plugin-zip/Plugins/minizip/zip.h"; sourceTree = "<group>"; };
+		64AD6F961B958FEF00E5560C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		65997388726044CEBEAE089E /* Foundation.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6C441EFBEB0047F8ADCCC9AE /* DeviceInfoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceInfoHelper.h; path = "cordova-plugin-device/DeviceInfoHelper.h"; sourceTree = "<group>"; };
 		6F141184A3274896BF1DA211 /* IonicKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IonicKeyboard.h; path = com.ionic.keyboard/IonicKeyboard.h; sourceTree = "<group>"; };
@@ -200,9 +204,6 @@
 		F190500B8D834C90B9151C80 /* CoreTelephony.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "猪猪笑话/config.xml"; sourceTree = "<group>"; };
 		FB41F91125104F51ADDCC376 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = "cordova-plugin-zip/Plugins/minizip/unzip.h"; sourceTree = "<group>"; };
-		3CADE2381B95522F000132BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		3CADE23A1B95523B000132BF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		64AD6F961B958FEF00E5560C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +456,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = V97U43U3ZC;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "猪猪笑话" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -618,6 +624,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -654,6 +661,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
