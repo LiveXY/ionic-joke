@@ -48,7 +48,7 @@ find $sourcePath/js/controllers/* | xargs cat >> "$wwwPath/ionic.app.js"
 find $wwwPath/ionic.app.js | xargs perl -pi -e "s|'use strict';||g"
 if [ "$pf" != '' ]; then
 	pf="-$pf"
-	find $wwwPath/ionic.app.js | xargs perl -pi -e "s|'cn.org.smhc.moodthermo'|'cn.org.smhc.moodthermo$pf'|g"
+	find $wwwPath/ionic.app.js | xargs perl -pi -e "s|'com.livexy.joke'|'com.livexy.joke$pf'|g"
 fi
 echo '生成文件成功！'
 

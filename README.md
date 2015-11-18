@@ -93,3 +93,18 @@ sudo cordova plugin add ../plugins_code/jpush-phonegap-plugin
 ./android-release.sh b #编译并安装到手机
 ./android-release.sh b 渠道名 #编译各渠道并安装到手机
 ```
+====================================================
+android市场：
+```
+http://open.wandoujia.com/home/myapp
+http://dev.anzhi.com/
+http://dev.appchina.com/market/dev/main.action
+http://dev.360.cn/mod/mobile/list
+http://app.baidu.com/apps
+http://open.qq.com
+https://open.weixin.qq.com/
+http://dev.xiaomi.com/index
+http://developer.huawei.com/cn/consumer/devunion/ui/index.html
+http://dev.mumayi.com/user/index
+http://open.flyme.cn/
+```
