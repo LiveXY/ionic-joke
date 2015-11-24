@@ -65,7 +65,8 @@ app.factory('init', ['$http', '$location', '$ionicHistory', '$rootScope', '$ioni
 			$scope.currUser = function() { return data.getObject('user'); };
 			//复制
 			$scope.iCopy = function(text) {
-				if (window.cordova && window.cordova.plugins.clipboard) {
+				if (text && window.cordova && window.cordova.plugins.clipboard) {
+					text = '分享：\n' + text.replace(/(<br\/>)/g, '\n') + '\n\n来自：猪猪笑话http://joke2.5alife.cn';
 					cordova.plugins.clipboard.copy(text);
 					msg.text('复制成功！', 1);
 				}
