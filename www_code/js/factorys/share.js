@@ -78,6 +78,9 @@ app.factory('login', ['data', 'msg', 'UserService', function(data, msg, UserServ
 				}
 			}
 		};
+		if (title && !description && !thumb && !url) {
+			params = { scene: scene, text: title };
+		};
 		Wechat.share(params, function () {
 			msg.text((scene == 2 ? '收藏' : '分享') + '成功！', 5);
 			if (callback) callback();
@@ -92,10 +95,13 @@ app.factory('login', ['data', 'msg', 'UserService', function(data, msg, UserServ
 			description: description,
 			imageUrl: thumb
 		};
+		if (title && !description && !thumb && !url) {
+			params = { scene: scene, text: title };
+		};
 		switch(type){
-			case 0: args.appName = '心情温度计'; key = "shareToQQ"; break;
+			case 0: args.appName = '猪猪笑话'; key = "shareToQQ"; break;
 			case 1: args.imageUrl = [thumb]; key = "shareToQzone"; break;
-			case 2: args.appName = '心情温度计'; key = "addToQQFavorites"; break;
+			case 2: args.appName = '猪猪笑话'; key = "addToQQFavorites"; break;
 		}
 		YCQQ[key](function(){
 			msg.text((type == 2 ? '收藏' : '分享') + '成功！', 5);

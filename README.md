@@ -74,6 +74,8 @@ sudo cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 sudo cordova plugin add ../plugins_code/com.livexy.core
 sudo cordova plugin add ../plugins_code/cordova-plugin-device
 sudo cordova plugin add ../plugins_code/jpush-phonegap-plugin
+sudo cordova plugin add https://github.com/xu-li/cordova-plugin-wechat --variable wechatappid=wx4d76cc65246e7331
+sudo cordova plugin add https://github.com/iVanPan/Cordova_QQ.git --variable QQ_APP_ID=1104978512
 ```
 ====================================================
 生成icon/splash:
