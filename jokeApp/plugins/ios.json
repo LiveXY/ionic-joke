@@ -11,6 +11,10 @@
                         {
                             "xml": true,
                             "count": 2
+                        },
+                        {
+                            "xml": false,
+                            "count": 2
                         }
                     ],
                     "AssetsLibrary.framework": [
@@ -28,7 +32,7 @@
                     "libz.dylib": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 3
                         },
                         {
                             "xml": true,
@@ -39,12 +43,16 @@
                         {
                             "xml": true,
                             "count": 1
+                        },
+                        {
+                            "xml": false,
+                            "count": 2
                         }
                     ],
                     "CoreGraphics.framework": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": true,
@@ -67,6 +75,10 @@
                         {
                             "xml": true,
                             "count": 1
+                        },
+                        {
+                            "xml": false,
+                            "count": 2
                         }
                     ],
                     "Foundation.framework": [
@@ -78,6 +90,36 @@
                     "UIKit.framework": [
                         {
                             "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "libsqlite3.0.dylib": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "libstdc++.6.dylib": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "libiconv.dylib": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "libsqlite3.dylib": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "libstdc++.dylib": [
+                        {
+                            "xml": false,
                             "count": 1
                         }
                     ]
@@ -137,6 +179,54 @@
                         {
                             "xml": "<feature name=\"JPushPlugin\"><param name=\"ios-package\" value=\"JPushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Wechat\"><param name=\"ios-package\" value=\"CDVWechat\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"WECHATAPPID\" value=\"wx4d76cc65246e7331\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"YCQQ\"><param name=\"ios-package\" value=\"YCQQ\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://openmobile.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://qzonestyle.gtimg.cn/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://pub.idqqimg.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://qzs.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://m.qzone.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://*.ptlogin2.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://*.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://q2.qlogo.cn/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"QQ_APP_ID\" value=\"1104978512\" />",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -152,12 +242,32 @@
                     "NSAppTransportSecurity": [
                         {
                             "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-                            "count": 1
+                            "count": 3
                         }
                     ],
                     "UIRequiresFullScreen": [
                         {
                             "xml": "<true />",
+                            "count": 1
+                        }
+                    ],
+                    "LSApplicationQueriesSchemes": [
+                        {
+                            "xml": "<array><string>weixin</string><string>wechat</string></array>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<array><string>mqqapi</string><string>mqq</string><string>mqqOpensdkSSoLogin</string><string>mqqconnect</string><string>mqqopensdkdataline</string><string>mqqopensdkgrouptribeshare</string><string>mqqopensdkfriend</string><string>mqqopensdkapi</string><string>mqqopensdkapiV2</string><string>mqqopensdkapiV3</string><string>mqzoneopensdk</string><string>wtloginmqq</string><string>wtloginmqq2</string><string>mqqwpa</string><string>mqzone</string><string>mqzonev2</string><string>mqzoneshare</string><string>wtloginqzone</string><string>mqzonewx</string><string>mqzoneopensdkapiV2</string><string>mqzoneopensdkapi19</string><string>mqzoneopensdkapi</string><string>mqzoneopensdk</string></array>",
+                            "count": 1
+                        }
+                    ],
+                    "CFBundleURLTypes": [
+                        {
+                            "xml": "<array><dict><key>CFBundleURLName</key><string>weixin</string><key>CFBundleURLSchemes</key><array><string>wx4d76cc65246e7331</string></array></dict></array>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLName</key><string>tencentopenapi</string><key>CFBundleURLSchemes</key><array><string>tencent1104978512</string></array></dict></array>",
                             "count": 1
                         }
                     ]
@@ -203,6 +313,14 @@
             "PACKAGE_NAME": "com.livexy.joke"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "xu.li.cordova.wechat": {
+            "WECHATAPPID": "wx4d76cc65246e7331",
+            "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "cordova-plugin-qqsdk": {
+            "QQ_APP_ID": "1104978512",
             "PACKAGE_NAME": "com.livexy.joke"
         }
     },

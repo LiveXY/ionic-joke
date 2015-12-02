@@ -39,6 +39,22 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Wechat">
+        <param name="android-package" value="xu.li.cordova.wechat.Wechat" />
+    </feature>
+    <preference name="WECHATAPPID" value="wx4d76cc65246e7331" />
+    <feature name="YCQQ">
+        <param name="android-package" value="org.zy.yuancheng.qq.YCQQ" />
+    </feature>
+    <access origin="https://openmobile.qq.com/*" />
+    <access origin="http://qzonestyle.gtimg.cn/*" />
+    <access origin="http://pub.idqqimg.com/*" />
+    <access origin="http://qzs.qq.com/*" />
+    <access origin="http://m.qzone.com/*" />
+    <access origin="http://*.ptlogin2.qq.com/*" />
+    <access origin="http://*.qq.com/*" />
+    <access origin="http://q2.qlogo.cn/*" />
+    <preference name="QQ_APP_ID" value="1104978512" />
     <feature name="Zip">
         <param name="android-package" value="org.apache.cordova.Zip" />
     </feature>

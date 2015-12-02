@@ -51,6 +51,54 @@
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Wechat\"><param name=\"android-package\" value=\"xu.li.cordova.wechat.Wechat\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"WECHATAPPID\" value=\"wx4d76cc65246e7331\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"YCQQ\"><param name=\"android-package\" value=\"org.zy.yuancheng.qq.YCQQ\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://openmobile.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://qzonestyle.gtimg.cn/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://pub.idqqimg.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://qzs.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://m.qzone.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://*.ptlogin2.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://*.qq.com/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"http://q2.qlogo.cn/*\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"QQ_APP_ID\" value=\"1104978512\" />",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -66,11 +114,23 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 2
+                            "count": 3
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 1
                         }
                     ],
                     "/manifest": [
@@ -84,7 +144,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
@@ -96,7 +156,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
@@ -112,7 +172,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\" />",
@@ -159,6 +219,22 @@
                         {
                             "xml": "<meta-data android:name=\"JPUSH_APPKEY\" android:value=\"5b04019483ab8dc750fcc60e\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"true\" android:label=\"@string/launcher_name\" android:name=\".wxapi.WXEntryActivity\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><data android:scheme=\"wx4d76cc65246e7331\" /></intent-filter></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"true\" android:label=\"@string/launcher_name\" android:launchMode=\"singleTop\" android:name=\".wxapi.WXPayEntryActivity\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><data android:scheme=\"wx4d76cc65246e7331\" /></intent-filter></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:launchMode=\"singleTask\" android:name=\"com.tencent.tauth.AuthActivity\" android:noHistory=\"true\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:scheme=\"tencent1104978512\" /></intent-filter></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"orientation|keyboardHidden\" android:name=\"com.tencent.connect.common.AssistActivity\" android:screenOrientation=\"portrait\" android:theme=\"@android:style/Theme.Translucent.NoTitleBar\"></activity>",
+                            "count": 1
                         }
                     ]
                 }
@@ -203,6 +279,14 @@
             "PACKAGE_NAME": "com.livexy.joke"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "xu.li.cordova.wechat": {
+            "WECHATAPPID": "wx4d76cc65246e7331",
+            "PACKAGE_NAME": "com.livexy.joke"
+        },
+        "cordova-plugin-qqsdk": {
+            "QQ_APP_ID": "1104978512",
             "PACKAGE_NAME": "com.livexy.joke"
         }
     },

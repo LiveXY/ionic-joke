@@ -111,5 +111,27 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "xu.li.cordova.wechat": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/xu-li/cordova-plugin-wechat",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "WECHATAPPID": "wx4d76cc65246e7331"
+        }
+    },
+    "cordova-plugin-qqsdk": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/iVanPan/Cordova_QQ.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "QQ_APP_ID": "1104978512"
+        }
     }
 }

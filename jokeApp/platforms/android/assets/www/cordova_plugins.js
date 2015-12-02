@@ -249,6 +249,20 @@ module.exports = [
         "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
         "runs": true
+    },
+    {
+        "file": "plugins/xu.li.cordova.wechat/www/wechat.js",
+        "id": "xu.li.cordova.wechat.Wechat",
+        "clobbers": [
+            "Wechat"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-qqsdk/www/ycqq.js",
+        "id": "cordova-plugin-qqsdk.ycqq",
+        "clobbers": [
+            "YCQQ"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -266,7 +280,9 @@ module.exports.metadata =
     "com.livexy.core": "1.0.0",
     "cordova-plugin-device": "1.0.1",
     "cn.jpush.phonegap.JPushPlugin": "2.0.2",
-    "cordova-plugin-whitelist": "1.0.0"
+    "cordova-plugin-whitelist": "1.2.0",
+    "xu.li.cordova.wechat": "0.9.3",
+    "cordova-plugin-qqsdk": "0.3.9"
 }
 // BOTTOM OF METADATA
 });

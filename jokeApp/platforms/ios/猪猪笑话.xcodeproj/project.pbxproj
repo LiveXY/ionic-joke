@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00D2D2D0D2F34C9186F0BBE1 /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C978B56EDE4B108B5ECDFE /* CDVConnection.m */; };
 		029FA4F16434468D894242BE /* CDVAppCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 098143E56A504131BF1F5032 /* CDVAppCore.m */; };
@@ -76,6 +75,16 @@
 		FAA4489EEC87465582E2585D /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 477359706A1F48D1A8E276BB /* CDVReachability.m */; };
 		FE57E8F17DCA42F39E2C621E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EE7E9686324399A2B56394 /* CDVDevice.m */; };
 		FE5F59782BAF4F8A99DF8373 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92972A7FD99440059C2A97B4 /* libz.dylib */; };
+		A1988CBFF3524C86BB7024A6 /* CDVWechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C879135C91041B8A7AE8BAE /* CDVWechat.m */; };
+		4893352636F24BB48150132F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB7345B58F34D6F8A44C7FB /* libWeChatSDK.a */; };
+		8E06CB33BAC14AD3A47F70A0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 437D017F4FEB4FAAA3A2842A /* libsqlite3.0.dylib */; };
+		60DA6EFFF1E24442930C0447 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D080BCB2D11544FE831C9F3D /* libstdc++.6.dylib */; };
+		7B3D10D0864C4D2B9164966E /* YCQQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 08358EDCBEB24CF5BD309056 /* YCQQ.m */; };
+		E9655F081C3F43F88318BEAE /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15A02DED928C4136B7B78901 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		F14601BE7FD647F5BF8F03C0 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50D81416E594F4FB4F028D5 /* TencentOpenAPI.framework */; };
+		C1C9FA1DB2BC4BD1895F2642 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E06DF534A04614BAA7A035 /* libiconv.dylib */; };
+		205BA8EA89CE433C94D94559 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD76410F1EAF436D8D2E1A8B /* libsqlite3.dylib */; };
+		A657BDB4B31A4A7D9D5420F4 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9D6A6C9C984733AC3A3660 /* libstdc++.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +213,20 @@
 		F190500B8D834C90B9151C80 /* CoreTelephony.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "猪猪笑话/config.xml"; sourceTree = "<group>"; };
 		FB41F91125104F51ADDCC376 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = "cordova-plugin-zip/Plugins/minizip/unzip.h"; sourceTree = "<group>"; };
+		4C879135C91041B8A7AE8BAE /* CDVWechat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVWechat.m"; path = "xu.li.cordova.wechat/CDVWechat.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		3CB7345B58F34D6F8A44C7FB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libWeChatSDK.a"; path = "猪猪笑话/Plugins/xu.li.cordova.wechat/libWeChatSDK.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		0D02EC4AC3074BDA8D18C084 /* CDVWechat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVWechat.h"; path = "xu.li.cordova.wechat/CDVWechat.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		EAF81AEA916849D8A9DBADEC /* WXApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "WXApi.h"; path = "xu.li.cordova.wechat/WXApi.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		874DB3277A084CA388BD8416 /* WXApiObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "WXApiObject.h"; path = "xu.li.cordova.wechat/WXApiObject.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		437D017F4FEB4FAAA3A2842A /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.0.dylib"; path = "usr/lib/libsqlite3.0.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		D080BCB2D11544FE831C9F3D /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		08358EDCBEB24CF5BD309056 /* YCQQ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "YCQQ.m"; path = "cordova-plugin-qqsdk/YCQQ.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		BF0672075C954FF7AF6C9A2B /* YCQQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YCQQ.h"; path = "cordova-plugin-qqsdk/YCQQ.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		15A02DED928C4136B7B78901 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "TencentOpenApi_IOS_Bundle.bundle"; path = "TencentOpenApi_IOS_Bundle.bundle"; sourceTree = "<group>"; };
+		A50D81416E594F4FB4F028D5 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "TencentOpenAPI.framework"; path = "猪猪笑话/Plugins/cordova-plugin-qqsdk/TencentOpenAPI.framework"; sourceTree = "<group>"; };
+		47E06DF534A04614BAA7A035 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libiconv.dylib"; path = "usr/lib/libiconv.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		DD76410F1EAF436D8D2E1A8B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		EC9D6A6C9C984733AC3A3660 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +247,13 @@
 				E6EC8751A3E642488EC6ADDD /* Foundation.framework in Frameworks */,
 				E044AA07900848C09E0BA9CE /* UIKit.framework in Frameworks */,
 				A36C7C7D366146CCB17D4EA7 /* Security.framework in Frameworks */,
+				4893352636F24BB48150132F /* libWeChatSDK.a in Frameworks */,
+				8E06CB33BAC14AD3A47F70A0 /* libsqlite3.0.dylib in Frameworks */,
+				60DA6EFFF1E24442930C0447 /* libstdc++.6.dylib in Frameworks */,
+				F14601BE7FD647F5BF8F03C0 /* TencentOpenAPI.framework in Frameworks */,
+				C1C9FA1DB2BC4BD1895F2642 /* libiconv.dylib in Frameworks */,
+				205BA8EA89CE433C94D94559 /* libsqlite3.dylib in Frameworks */,
+				A657BDB4B31A4A7D9D5420F4 /* libstdc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +317,7 @@
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* 猪猪笑话-Info.plist */,
 				2289DD564B574C62B324580E /* PushConfig.plist */,
+				15A02DED928C4136B7B78901 /* TencentOpenApi_IOS_Bundle.bundle */,
 			);
 			name = Resources;
 			path = "猪猪笑话/Resources";
@@ -307,6 +338,13 @@
 				65997388726044CEBEAE089E /* Foundation.framework */,
 				1E638205FC624370B427C97C /* UIKit.framework */,
 				3C332A2C222B49FEAA6BCD87 /* Security.framework */,
+				3CB7345B58F34D6F8A44C7FB /* libWeChatSDK.a */,
+				437D017F4FEB4FAAA3A2842A /* libsqlite3.0.dylib */,
+				D080BCB2D11544FE831C9F3D /* libstdc++.6.dylib */,
+				A50D81416E594F4FB4F028D5 /* TencentOpenAPI.framework */,
+				47E06DF534A04614BAA7A035 /* libiconv.dylib */,
+				DD76410F1EAF436D8D2E1A8B /* libsqlite3.dylib */,
+				EC9D6A6C9C984733AC3A3660 /* libstdc++.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -374,6 +412,12 @@
 				4CC37034D3B14541BF686310 /* JPushPlugin.h */,
 				1F1845D7F3EC43E0803D9BA0 /* APService.h */,
 				B34D87A1D07D4C87B561E640 /* AppDelegate+JPush.h */,
+				4C879135C91041B8A7AE8BAE /* CDVWechat.m */,
+				0D02EC4AC3074BDA8D18C084 /* CDVWechat.h */,
+				EAF81AEA916849D8A9DBADEC /* WXApi.h */,
+				874DB3277A084CA388BD8416 /* WXApiObject.h */,
+				08358EDCBEB24CF5BD309056 /* YCQQ.m */,
+				BF0672075C954FF7AF6C9A2B /* YCQQ.h */,
 			);
 			name = Plugins;
 			path = "猪猪笑话/Plugins";
@@ -536,6 +580,7 @@
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
 				33D1C7178ABF4EC7B6731BED /* PushConfig.plist in Resources */,
+				E9655F081C3F43F88318BEAE /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +637,8 @@
 				84C95E8F7BF040DFA779A8EB /* SFHFKeychainUtils.m in Sources */,
 				A9B3DD16200440E1A439F2D8 /* JPushPlugin.m in Sources */,
 				031A5DDAAB0A4F8D93D2567B /* AppDelegate+JPush.m in Sources */,
+				A1988CBFF3524C86BB7024A6 /* CDVWechat.m in Sources */,
+				7B3D10D0864C4D2B9164966E /* YCQQ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +685,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/猪猪笑话/Plugins/cn.jpush.phonegap.JPushPlugin\"",
+					"\"$(SRCROOT)/猪猪笑话/Plugins/xu.li.cordova.wechat\"",
 				);
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -653,6 +701,10 @@
 				);
 				PRODUCT_NAME = "猪猪笑话";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"猪猪笑话/Plugins/cordova-plugin-qqsdk\"",
+				);
 			};
 			name = Debug;
 		};
@@ -673,6 +725,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/猪猪笑话/Plugins/cn.jpush.phonegap.JPushPlugin\"",
+					"\"$(SRCROOT)/猪猪笑话/Plugins/xu.li.cordova.wechat\"",
 				);
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -688,6 +741,10 @@
 				);
 				PRODUCT_NAME = "猪猪笑话";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"猪猪笑话/Plugins/cordova-plugin-qqsdk\"",
+				);
 			};
 			name = Release;
 		};
