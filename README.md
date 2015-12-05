@@ -78,6 +78,28 @@ sudo cordova plugin add https://github.com/xu-li/cordova-plugin-wechat --variabl
 sudo cordova plugin add https://github.com/iVanPan/Cordova_QQ.git --variable QQ_APP_ID=1104978512
 ```
 ====================================================
+www_code/js/services/config.js 手动添加:
+```
+//配置配置
+'use strict';
+
+//配置基础数据
+app.constant('config', {
+	vid: 版本号, vname: '版本名称', bundleid: '',
+	refresh: {},
+	api: 'your site url',
+	apiTimeout: 30 * 1000
+})
+//配置白名单
+.config(['$sceDelegateProvider', function($sceDelegateProvider) {
+	$sceDelegateProvider.resourceUrlWhitelist([
+		'self',
+		'your site url'
+	]);
+}]);
+
+```
+====================================================
 生成icon/splash:
 ```
 ./resources.sh
