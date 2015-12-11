@@ -40,6 +40,7 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			if (title && text) {
 				option['title'] = title;
 				option['template'] = text;
+				option['cssClass'] = 'pop-alert2';
 			} else {
 				option['title'] = title;
 				option['cssClass'] = 'pop-alert';
@@ -52,6 +53,7 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			if (title && text) {
 				option['title'] = title;
 				option['template'] = text;
+				option['cssClass'] = 'pop-alert2';
 			} else {
 				option['title'] = title;
 				option['cssClass'] = 'pop-alert';
