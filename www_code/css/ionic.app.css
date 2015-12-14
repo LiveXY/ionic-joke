@@ -15,7 +15,7 @@ ion-content, ion-modal-view { background-color: #E9E9E9; }
 .popup .popup-head .popup-title {font-size:16px; font-weight:normal;}
 .popup .popup-buttons { padding:0px; min-height:40px; }
 .popup .popup-buttons .button,
-.popup .popup-buttons .button.button-positive { background-color:transparent; border:0px;border-right: 1px solid #ccc; border-radius:0; }
+.popup .popup-buttons .button.button-positive { background-color:transparent; border:0px;border-right: 1px solid #ccc; border-radius:0; margin-right:0; }
 .popup .popup-buttons .button.button-dark { color:#747884; border-right:0; }
 .popup .popup-buttons .button.button-assertive { color:#ef473a; border-right:0; }
 .popup .popup-buttons .button.button-positive { color:#44ABB2; border-right:0; }
@@ -179,7 +179,7 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .popup .popup-head,
 .joke.dark .popup .popup-body { border-bottom: 1px solid #151515; }
 .joke.dark .popup-container .popup-title, .joke.dark .popup-container .popup-body { color:#747884 }
-.joke.dark .popup .popup-buttons .button.button { background-color:transparent; border:0px;border-right: 1px solid #151515; border-radius:0; color:#747884; }
+.joke.dark .popup .popup-buttons .button { background-color:transparent; border:0px;border-right: 1px solid #151515; border-radius:0; color:#747884; margin-right:0; }
 .joke.dark .pop-alert2 .popup .popup-head { border-bottom:0px; }
 .joke.dark .popup .popup-buttons .button.button-dark { color:#ccc; }
 .joke.dark .item { background-color:#20262E; border-color:#151515; color:#747884 }

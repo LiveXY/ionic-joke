@@ -1,7 +1,7 @@
 //路由配置
 'use strict';
 
-var app = angular.module('jokeApp', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova'])
+var app = angular.module('jokeApp', ['ionic', 'ngCordova'])
 //全局配置
 .config(['$ionicConfigProvider', function($ionicConfigProvider) {
 	$ionicConfigProvider.views.swipeBackEnabled(false);
