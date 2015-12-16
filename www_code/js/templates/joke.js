@@ -97,7 +97,7 @@ $templateCache.put('like.html', '\
 				<a ng-click="iCopy(item.text)"><i class="icon ion-ios-copy-outline"></i> 复制</a>\
 			</div>\
 		</div>\
-		<div ng-if="nodata" class="nodata">你还没有喜欢的笑话和美图！</div>\
+		<div ng-if="nodata" class="nodata">你还没有喜欢的笑话！</div>\
 		<ion-infinite-scroll ng-if="isMore" on-infinite="loadData()" distance="10%"><ion-spinner icon="ios"></ion-spinner></ion-infinite-scroll>\
 	</ion-content>\
 </ion-view>\
@@ -105,10 +105,21 @@ $templateCache.put('like.html', '\
 
 //审核
 $templateCache.put('audit.html', '\
-<ion-view title="审核">\
-	<ion-nav-buttons side="left">\
-		<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goBack()"></button>\
-	</ion-nav-buttons>\
+<ion-view>\
+	<ion-nav-title>\
+		<div ng-if="!search" class="main-box bar bar-header">\
+			<button class="button button-icon button-clear ion-ios-arrow-left" ng-click="goBack()"></button>\
+			<div class="title">审核笑话</div>\
+			<button class="button button-icon button-clear ion-ios-search" ng-click="showSearch()"></button>\
+		</div>\
+		<div ng-if="search" class="search-box bar bar-header item-input-inset">\
+			<label class="item-input-wrapper">\
+				<i class="icon ion-ios-search placeholder-icon"></i>\
+				<input type="search" placeholder="请输入搜索关键字" ng-model="searchKey" ng-change="searchChange(searchKey)" ng-blur="searchChange(searchKey)">\
+			</label>\
+			<button class="button button-clear" ng-click="opClick()">{{searchState==0?\'关闭\':\'搜索\'}}</button>\
+		</div>\
+	</ion-nav-title>\
 	<ion-content>\
 		<ion-refresher on-refresh="refresh()" pulling-text="下拉刷新..."></ion-refresher>\
 		<div ion-item class="item-card" ng-repeat="item in list">\
@@ -141,7 +152,7 @@ $templateCache.put('edit.html', '\
 		<div class="audit-edit"><ion-tags source="tags" ng-model="joke.tags"></ion-tags></div>\
 		<div class="audit-title">评分：{{joke.score}}</div>\
 		<div class="audit-edit item range range-{{$root.skin}}"><input type="range" ng-model="joke.score" min="1" max="100"></div>\
-		<div class="padding"><button class="button button-block button-{{$root.skin}}" ng-click="auditPost()">提交意见</button></div>\
+		<div class="padding"><button class="button button-block button-{{$root.skin}}" ng-click="auditPost()">提交审核</button></div>\
 	</ion-content>\
 </ion-modal-view>\
 ');

@@ -20,12 +20,12 @@ app.factory('UserService', ['$http', 'config', 'data', function($http, config, d
 			});
 		},
 		//未读
-		messages: function() {
+		messages: function(maxJoke) {
 			return $http({
 				timeout: config.apiTimeout,
 				url: config.api.format('messages'),
 				method: "jsonp",
-				params: { 'sessionKey': data.get("sessionKey") }
+				params: { 'sessionKey': data.get("sessionKey"), 'maxJoke': maxJoke }
 			});
 		},
 		//最新版本

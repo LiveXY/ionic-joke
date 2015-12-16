@@ -70,7 +70,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngCordova'])
 	.state('version', { url: '/version', templateUrl: 'version.html', controller: 'versionController' });
 }])
 //启动
-.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util) {
+.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', 'login', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util, login) {
 	$rootScope.fontSize = data.get('fontSize') || '16';
 	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 	$rootScope.skin = $rootScope.openNight ? 'dark' : (data.get('skin') || 'assertive');
@@ -98,6 +98,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngCordova'])
 	//$ionicPlatform.on('online', function(e) { }); //联网
 
 	$ionicPlatform.ready(function() {
+		login.init();
 		if (navigator.connection && navigator.connection.type == 'none') {
 			if (navigator.splashscreen) navigator.splashscreen.hide();
 			return msg.text('请连接网络！');
@@ -114,6 +115,7 @@ var app = angular.module('jokeApp', ['ionic', 'ngCordova'])
 		init.auth().then(function(u) {
 			$rootScope.uid = u.uid;
 			$rootScope.admin = u.admin;
+			$rootScope.maxJoke = 0;
 			if (navigator.splashscreen) $timeout(function(){ navigator.splashscreen.hide(); }, 1000);
 			if (u && u.update==1 && navigator.connection) { $location.path('/version'); return false; }
 			init.setJPushTagsAndAlias();

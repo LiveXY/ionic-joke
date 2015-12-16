@@ -31,12 +31,12 @@ app.factory('JokeService', ['$http', 'config', 'data', function($http, config, d
 			});
 		},
 		//审核
-		audit: function(tag) {
+		audit: function(tag, key) {
 			return $http({
 				timeout: config.apiTimeout,
 				url: config.api.format('audit'),
 				method: 'jsonp',
-				params: { sessionKey: data.get('sessionKey'), tag: tag }
+				params: { sessionKey: data.get('sessionKey'), tag: tag, key: key }
 			});
 		},
 		//删除

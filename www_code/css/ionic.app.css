@@ -64,6 +64,8 @@ ion-list .list,.list { margin-top:-1px; }
 .item-card .item-footer .icon { font-size:22px; vertical-align: middle; }
 .item-card .item.item-footer { overflow: inherit; }
 
+.top-msg { position:absolute; background-color: rgba(0,0,0,.2); height:30px; line-height:30px; left: 0px; right:0px; text-align:center; -webkit-animation: fadeInDown 1s; animation: fadeInDown 1s; }
+
 .joke-loading { stroke:#fff; }
 .pop-msg { font-size:40px; }
 .nodata { text-align:center; color:#888; margin-top:40%; font-size:14px; }
@@ -96,8 +98,8 @@ ion-list .list,.list { margin-top:-1px; }
 .platform-ios .filter-menu.popover { top:50px; }
 .platform-android .filter-menu.popover { top:77px; }
 
-.search-box { background-color:transparent; }
-.platform-ios .search-box { margin-top:-20px; }
+.search-box,.main-box { background-color:transparent; }
+.platform-ios .search-box,.platform-ios .main-box { margin-top:-20px; }
 
 .about-title { text-align: center; font-size:16px; color:#f00; padding:20px; }
 .about-title img { width:80px; height:80px; }
@@ -126,6 +128,26 @@ ion-list .list,.list { margin-top:-1px; }
 .imageloaded-fadein { opacity: 1; -webkit-animation: fadein 1s; animation: fadein 1s; }
 @keyframes fadein {from { opacity: 0; } to { opacity: 1; }}
 @-webkit-keyframes fadein { from { opacity: 0; } to { opacity: 1; }}
+
+.fadeInDown {-webkit-animation-name: fadeInDown;animation-name: fadeInDown;}
+@-webkit-keyframes fadeInDown {
+	from {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}
+	to {opacity: 1;-webkit-transform: none;transform: none;}
+}
+@keyframes fadeInDown {
+	from {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}
+	to {opacity: 1;-webkit-transform: none;transform: none;}
+}
+.fadeOutUp {-webkit-animation-name: fadeOutUp;animation-name: fadeOutUp;}
+@-webkit-keyframes fadeOutUp {
+	from {opacity: 1;}
+	to {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}
+}
+@keyframes fadeOutUp {
+	from {opacity: 1;}
+	to {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}
+}
+
 
 .likeAnimated,.test-slide-box img.likeAnimated { display: block; width:40px; }
 .zoomIn {-webkit-animation-name: zoomIn;animation-name: zoomIn;-webkit-animation-duration:0.3s; animation-duration:0.3s; -webkit-animation-fill-mode: both;animation-fill-mode: both;}
@@ -183,7 +205,7 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .pop-alert2 .popup .popup-head { border-bottom:0px; }
 .joke.dark .popup .popup-buttons .button.button-dark { color:#ccc; }
 .joke.dark .item { background-color:#20262E; border-color:#151515; color:#747884 }
-.joke.dark .bar .title { color:#ccc; }
+.joke.dark .bar .title .search-box { color:#ccc; }
 .joke.dark .tabs a,
 .joke.dark .button.button-clear,
 .joke.dark .filter-title,
@@ -215,6 +237,7 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .audit-edit input,
 .joke.dark .audit-edit textarea,
 .joke.dark .feedback-text textarea { background-color:#20262E; color:#888; }
+.joke.dark .top-msg { background-color: rgba(0,0,0,.4); color:#df2727; }
 
 /*iPhone 6+ Portrait*/
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {

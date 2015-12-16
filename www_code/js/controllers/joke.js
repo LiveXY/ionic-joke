@@ -4,12 +4,11 @@
 //Tabs
 app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interval', 'init', 'data', 'config', 'UserService', function($location, $scope, $rootScope, $interval, init, data, config, UserService) {
 	function refresh(){
-		data.checkApi(UserService.messages(), function(res) {
-			config.messages = parseInt(res.messages);
-			$rootScope.messages = config.messages;
+		data.checkApi(UserService.messages($rootScope.maxJoke), function(res) {
+			$rootScope.newJokes = res.newJokes || 0;
 		});
 	};
-	$interval(refresh, 30 * 60 * 1000);
+	$interval(refresh, 5 * 60 * 1000);
 	$scope.go = function(path) { $location.path(path); };
 }])
 //笑话
@@ -18,6 +17,11 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 
 	$scope.$on('$ionicView.afterEnter', function() {
 		if (config.refresh.joke) $scope.refresh(1);
+	});
+
+	$scope.$watch('newJokes', function(v) {
+		if (!v) return false;
+		msg.top('joke', '您有'+v+'条最新笑话未读！', function() { $scope.refresh(1); msg.hide('joke'); });
 	});
 
 	//popover
@@ -31,11 +35,13 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.isMore = true;
 	$scope.list = []; $scope.tags = null;
 	$scope.nodata = false;
+	$rootScope.maxJoke = parseInt($rootScope.maxJoke) || 0;
 
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke($scope.tid, $scope.cid, currPage), function(res) {
 			$scope.isMore = res.list.length == 10;
 			angular.forEach(res.list, function(item) {
+				if (parseInt(item.id) > $rootScope.maxJoke) $rootScope.maxJoke = parseInt(item.id) || 0;
 				item.text = util.aes_decode($rootScope.uid, res.sign, item.text);
 				item.title = util.aes_decode($rootScope.uid, res.sign, item.title);
 				$scope.list.push(item);
@@ -56,6 +62,9 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 		});
 	};
 	$scope.refresh = function (r) {
+		$rootScope.maxJoke = 0;
+		$rootScope.newJokes = 0;
+		config.refresh.joke = false;
 		$scope.list = [];
 		currPage = 1;
 		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
@@ -64,6 +73,9 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 //搜索
 .controller('searchController', ['$timeout', '$scope', '$rootScope', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
+
+	if(window.cordova && window.cordova.plugins.Keyboard)
+		cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
 	var currPage = 1;
 	$scope.isMore = false;
@@ -193,7 +205,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.nodata = false;
 
 	$scope.loadData = function () {
-		data.checkApi(JokeService.audit($scope.tags ? 0 : 1), function(res) {
+		data.checkApi(JokeService.audit($scope.tags ? 0 : 1, $scope.searchKey), function(res) {
 			$scope.isMore = res.list.length == 10;
 			angular.forEach(res.list, function(item) {
 				var exist = false;
@@ -225,4 +237,25 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 		$scope.list = [];
 		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
 	};
+
+	$scope.search = false; $scope.searchState = 0; $scope.searchKey = '';
+	$scope.showSearch = function() { $scope.search = true; }
+	$scope.searchChange = function (key) {
+		$scope.searchKey = key;
+		if ($scope.searchKey == ''){
+			$scope.searchState = 0;
+		} else {
+			$scope.searchState = 1;
+		}
+	};
+	$scope.opClick = function() {
+		if ($scope.searchState == 0) {
+			$scope.search = false;
+			$scope.searchKey = '';
+			$scope.refresh(1);
+		} else if($scope.searchState == 1) {
+			$timeout(function(){ $scope.searchState = 0; });
+			$scope.refresh(1);
+		}
+	}
 }]);

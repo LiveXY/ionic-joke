@@ -2,7 +2,7 @@
 'use strict';
 
 //我的
-app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init', 'data', 'config', function($timeout, $scope, $rootScope, init, data, config) {
+app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init', 'data', 'config', 'login', 'share', function($timeout, $scope, $rootScope, init, data, config, login, share) {
 	init.registerBase($scope);
 
 	$rootScope.fontSize = data.get('fontSize') || '16';
@@ -41,6 +41,17 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 				}
 			});
 		}
+	}
+	$scope.showShareButton = false; //login.wechatIsInstalled() || login.qqIsInstalled();
+	$scope.showShare = function(){
+		var url = config.api.split('?')[0].format('down');
+		var list = url.split('/'); list.splice(3,2);
+		var ico = list.join('/') + '/client/images/80.png';
+		share.pop('猪猪笑话－搞笑段子、短信', '猪猪笑话精选大量最新笑话，汇集互联网上各类新鲜流行的笑话段子，提供大量经典笑话、幽默笑话、成人笑话、爆笑笑话、冷笑话等，让你每天笑一笑，学习工作没烦恼，能给您带来轻松快乐的心情。', ico, url, function(){
+			data.checkApi(NewsService.newsShare($stateParams.id), function(res) {
+				$scope.info.shares = res.shares;
+			});
+		});
 	}
 }])
 //我要反馈

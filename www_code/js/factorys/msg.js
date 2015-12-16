@@ -3,6 +3,21 @@
 
 app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', function($rootScope, $ionicLoading, $ionicPopup, $timeout) {
 	return {
+		top: function(view, msg, cb) {
+			var top = document.querySelector('ion-nav-view[name="{0}"] > ion-view > ion-content'.format(view)).offsetTop;
+			var msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
+			var viewObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view'.format(view)));
+			if (msgObj.length > 0) { msgObj.text(msg); return false; }
+			viewObj.append('<div class="top-msg">{0}</div>'.format(msg));
+			msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
+			if (msgObj) {
+				msgObj[0].style.top = top + 'px';
+				if (cb) msgObj.bind('click', function(){
+					msgObj.addClass('fadeOutUp');
+					$timeout(cb, 500);
+				});
+			}
+		},
 		//提示消息 s秒后自动隐藏
 		text: function(msg, s) {
 			msg = msg || '';
@@ -28,7 +43,10 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			if (s) $timeout(function(){ $ionicLoading.hide(); }, s * 1000);
 		},
 		//隐藏
-		hide: function(){ $ionicLoading.hide(); },
+		hide: function(view){
+			if (view) angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view))).remove();
+			$ionicLoading.hide();
+		},
 		//加载中消息
 		loading: function(msg) {
 			msg = msg || '正在加载数据...';
@@ -45,7 +63,12 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 				option['title'] = title;
 				option['cssClass'] = 'pop-alert';
 			}
-			$ionicPopup.alert(option);
+			var pop = $ionicPopup.alert(option);
+			$timeout(function() {
+				angular.element(document.querySelector('.popup-container'))
+					.css('pointer-events', 'all')
+					.bind('click', function(){ pop.close(); });
+			}, 500);
 		},
 		//确认消息
 		confirm: function(title, text, okText) {
@@ -58,7 +81,13 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 				option['title'] = title;
 				option['cssClass'] = 'pop-alert';
 			}
-			return $ionicPopup.confirm(option);
+			var pop = $ionicPopup.confirm(option);
+			$timeout(function() {
+				angular.element(document.querySelector('.popup-container'))
+					.css('pointer-events', 'all')
+					.bind('click', function(){ pop.close(); });
+			}, 500);
+			return pop;
 		}
 	};
 }]);

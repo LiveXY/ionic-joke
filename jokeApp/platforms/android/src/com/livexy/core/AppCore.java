@@ -15,13 +15,13 @@ public class AppCore extends CordovaPlugin {
 		if (action.equals("setRootPath")) {
 
 			String urlString = args.toString().substring(2, args.toString().indexOf("\"]"));
-			System.out.println("========接收到更新啦========》" + urlString);
+            System.out.println("========接收到更新啦========》" + urlString);
 
-			//从新刷新UI
-			CordovaActivity cActivity = (CordovaActivity) this.cordova.getActivity();
-			cActivity.loadUrl(urlString);
+            //从新刷新UI
+            CordovaActivity cActivity = (CordovaActivity) this.cordova.getActivity();
+            cActivity.loadUrl(urlString);
 
-			callbackContext.success();
+            callbackContext.success();
 
         } else {
             return false;
