@@ -57,8 +57,10 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 //我要反馈
 .controller('feedbackController', ['$scope', 'init', 'data', 'msg', 'UserService', function($scope, init, data, msg, UserService) {
 
-	if(window.cordova && window.cordova.plugins.Keyboard)
-		cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	$scope.$on('$ionicView.afterEnter', function() {
+		if(window.cordova && window.cordova.plugins.Keyboard)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	});
 
 	init.registerBase($scope);
 	$scope.data = {};
@@ -74,8 +76,10 @@ app.controller('settingController', ['$timeout', '$scope', '$rootScope', 'init',
 //投稿
 .controller('uploadController', ['$scope', 'init', 'data', 'msg', 'UserService', function($scope, init, data, msg, UserService) {
 
-	if(window.cordova && window.cordova.plugins.Keyboard)
-		cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	$scope.$on('$ionicView.afterEnter', function() {
+		if(window.cordova && window.cordova.plugins.Keyboard)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	});
 
 	init.registerBase($scope);
 	$scope.data = {};

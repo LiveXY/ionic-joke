@@ -3,19 +3,24 @@
 
 app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', function($rootScope, $ionicLoading, $ionicPopup, $timeout) {
 	return {
-		top: function(view, msg, cb) {
+		top: function(view, msg, cb, css) {
+			css = css || '';
 			var top = document.querySelector('ion-nav-view[name="{0}"] > ion-view > ion-content'.format(view)).offsetTop;
 			var msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			var viewObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view'.format(view)));
 			if (msgObj.length > 0) { msgObj.text(msg); return false; }
-			viewObj.append('<div class="top-msg">{0}</div>'.format(msg));
+			viewObj.append('<div class="top-msg {1}">{0}</div>'.format(msg, css));
 			msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			if (msgObj) {
 				msgObj[0].style.top = top + 'px';
-				if (cb) msgObj.bind('click', function(){
+				if (cb && typeof cb === 'function') msgObj.bind('click', function(){
 					msgObj.addClass('fadeOutUp');
 					$timeout(cb, 500);
 				});
+				if (cb && typeof cb === 'number') $timeout(function(){
+					msgObj.addClass('fadeOutUp');
+					$timeout(function(){ angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view))).remove(); }, 500);
+				}, cb * 1000);
 			}
 		},
 		//提示消息 s秒后自动隐藏

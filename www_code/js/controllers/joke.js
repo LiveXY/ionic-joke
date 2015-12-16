@@ -74,8 +74,10 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 .controller('searchController', ['$timeout', '$scope', '$rootScope', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
 
-	if(window.cordova && window.cordova.plugins.Keyboard)
-		cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	$scope.$on('$ionicView.afterEnter', function() {
+		if(window.cordova && window.cordova.plugins.Keyboard)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	});
 
 	var currPage = 1;
 	$scope.isMore = false;
@@ -160,6 +162,11 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 //审核
 .controller('auditController', ['$timeout', '$scope', '$rootScope', '$ionicModal', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, $ionicModal, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
+
+	$scope.$on('$ionicView.afterEnter', function() {
+		if(window.cordova && window.cordova.plugins.Keyboard)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+	});
 
 	$scope.joke = null; var index = 0;
 	$ionicModal.fromTemplateUrl('edit.html', function(modal) { $scope.modelAudit = modal; }, { scope: $scope, animation: 'slide-in-up' });

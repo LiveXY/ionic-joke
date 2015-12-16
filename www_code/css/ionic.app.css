@@ -64,7 +64,7 @@ ion-list .list,.list { margin-top:-1px; }
 .item-card .item-footer .icon { font-size:22px; vertical-align: middle; }
 .item-card .item.item-footer { overflow: inherit; }
 
-.top-msg { position:absolute; background-color: rgba(0,0,0,.2); height:30px; line-height:30px; left: 0px; right:0px; text-align:center; -webkit-animation: fadeInDown 1s; animation: fadeInDown 1s; }
+.top-msg { position:absolute; background-color: rgba(0,0,0,.5); height:30px; line-height:30px; left: 0px; right:0px; text-align:center; -webkit-animation: fadeInDown 1s; animation: fadeInDown 1s; }
 
 .joke-loading { stroke:#fff; }
 .pop-msg { font-size:40px; }
@@ -191,7 +191,7 @@ ion-list .list,.list { margin-top:-1px; }
 
 .action-sheet,.platform-android .action-sheet { margin-left:0; margin-right:0; }
 .action-sheet-group,.platform-android .action-sheet-group { margin-bottom:0; border-radius:0; }
-.action-sheet-options,.platform-android .action-sheet-options { background: rgba(255,255,255,0.92); }
+.action-sheet-options,.platform-android .action-sheet-options { background: rgba(255,255,255,0.96); }
 
 .joke.dark .pane,
 .joke.dark .view,
@@ -237,7 +237,7 @@ ion-list .list,.list { margin-top:-1px; }
 .joke.dark .audit-edit input,
 .joke.dark .audit-edit textarea,
 .joke.dark .feedback-text textarea { background-color:#20262E; color:#888; }
-.joke.dark .top-msg { background-color: rgba(0,0,0,.4); color:#df2727; }
+.joke.dark .top-msg { background-color: rgba(0,0,0,.5); color:#df2727; }
 
 /*iPhone 6+ Portrait*/
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
