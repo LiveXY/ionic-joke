@@ -8,21 +8,24 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 			$rootScope.newJokes = res.newJokes || 0;
 		});
 	};
-	$interval(refresh, 5 * 60 * 1000);
-	$scope.go = function(path) { $location.path(path); };
+	$interval(refresh, 60 * 1000);
+	$scope.go = function(path) { refresh(); $location.path(path); };
 }])
 //笑话
 .controller('jokeController', ['$scope', '$rootScope', '$ionicPopover', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($scope, $rootScope, $ionicPopover, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
 
+	function watchTopMessage(v, o){
+		if (!v || v == o) return false;
+		msg.top('joke', '您有'+v+'条最新笑话未读！', function() { $scope.refresh(1); msg.hide('joke'); });
+	}
 	$scope.$on('$ionicView.afterEnter', function() {
 		if (config.refresh.joke) $scope.refresh(1);
+		if ($rootScope.newJokes > 0) $timeout(function(){ watchTopMessage($rootScope.newJokes); }, 500);
+
+		$scope.$watch('newJokes', watchTopMessage);
 	});
 
-	$scope.$watch('newJokes', function(v) {
-		if (!v) return false;
-		msg.top('joke', '您有'+v+'条最新笑话未读！', function() { $scope.refresh(1); msg.hide('joke'); });
-	});
 
 	//popover
 	$scope.cid = 0; $scope.tid = 0;

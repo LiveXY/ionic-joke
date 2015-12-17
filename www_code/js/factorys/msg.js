@@ -12,7 +12,7 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			viewObj.append('<div class="top-msg {1}">{0}</div>'.format(msg, css));
 			msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			if (msgObj) {
-				msgObj[0].style.top = top + 'px';
+				if (top > 0) msgObj[0].style.top = top + 'px';
 				if (cb && typeof cb === 'function') msgObj.bind('click', function(){
 					msgObj.addClass('fadeOutUp');
 					$timeout(cb, 500);
@@ -72,7 +72,7 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			$timeout(function() {
 				angular.element(document.querySelector('.popup-container'))
 					.css('pointer-events', 'all')
-					.bind('click', function(){ pop.close(); });
+					.bind('click', function(e){ if (angular.element(e.target).hasClass('popup-container')) pop.close(); });
 			}, 500);
 		},
 		//确认消息
@@ -90,7 +90,29 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			$timeout(function() {
 				angular.element(document.querySelector('.popup-container'))
 					.css('pointer-events', 'all')
-					.bind('click', function(){ pop.close(); });
+					.bind('click', function(e){ if (angular.element(e.target).hasClass('popup-container')) pop.close(); });
+			}, 500);
+			return pop;
+		},
+		show: function($scope, title, text, okText, cb) {
+			if (typeof okText === 'function') { cb = okText; okText = '确定'; }
+			else okText = okText || '确定';
+			var option = { };
+			if (title && text) {
+				option['title'] = title;
+				option['template'] = text;
+				option['cssClass'] = 'pop-alert2';
+			} else {
+				option['title'] = title;
+				option['cssClass'] = 'pop-alert';
+			}
+			option['scope'] = $scope;
+			option['buttons'] = [ { text: '取消' }, { text: okText, onTap: cb }];
+			var pop = $ionicPopup.show(option);
+			$timeout(function() {
+				angular.element(document.querySelector('.popup-container'))
+					.css('pointer-events', 'all')
+					.bind('click', function(e){ if (angular.element(e.target).hasClass('popup-container')) pop.close(); });
 			}, 500);
 			return pop;
 		}
