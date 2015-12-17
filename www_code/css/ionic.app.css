@@ -65,6 +65,8 @@ ion-list .list,.list { margin-top:-1px; }
 .item-card .item.item-footer { overflow: inherit; }
 
 .top-msg { position:absolute; background-color: rgba(0,0,0,.5); height:30px; line-height:30px; left: 0px; right:0px; top:44px; text-align:center; -webkit-animation: fadeInDown 1s; animation: fadeInDown 1s; color:#fff; }
+.platform-ios .top-msg { top:64px; }
+.platform-ios4 .top-msg { top:44px; }
 
 .joke-loading { stroke:#fff; }
 .pop-msg { font-size:40px; }

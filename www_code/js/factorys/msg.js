@@ -8,7 +8,15 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 			var top = document.querySelector('ion-nav-view[name="{0}"] > ion-view > ion-content'.format(view)).offsetTop;
 			var msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			var viewObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view'.format(view)));
-			if (msgObj.length > 0) { msgObj.text(msg); return false; }
+			if (msgObj.length > 0) {
+				if (!msg) {
+					msgObj.addClass('fadeOutUp');
+					$timeout(function(){ angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view))).remove(); }, 500);
+					return false;
+				}
+				msgObj.text(msg);
+				return false;
+			}
 			viewObj.append('<div class="top-msg {1}">{0}</div>'.format(msg, css));
 			msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			if (msgObj) {

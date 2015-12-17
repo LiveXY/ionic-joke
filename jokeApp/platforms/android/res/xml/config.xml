@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.livexy.joke" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <preference name="WECHATAPPID" value="wx4d76cc65246e7331" />
-    <preference name="QQ_APP_ID" value="1104978512" />
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
@@ -12,9 +10,6 @@
     </feature>
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-    </feature>
-    <feature name="Zip">
-        <param name="android-package" value="org.apache.cordova.Zip" />
     </feature>
     <feature name="StatusBar">
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
@@ -47,6 +42,7 @@
     <feature name="Wechat">
         <param name="android-package" value="xu.li.cordova.wechat.Wechat" />
     </feature>
+    <preference name="WECHATAPPID" value="wx4d76cc65246e7331" />
     <feature name="YCQQ">
         <param name="android-package" value="org.zy.yuancheng.qq.YCQQ" />
     </feature>
@@ -58,6 +54,10 @@
     <access origin="http://*.ptlogin2.qq.com/*" />
     <access origin="http://*.qq.com/*" />
     <access origin="http://q2.qlogo.cn/*" />
+    <preference name="QQ_APP_ID" value="1104978512" />
+    <feature name="Zip">
+        <param name="android-package" value="org.apache.cordova.Zip" />
+    </feature>
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />

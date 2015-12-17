@@ -71,6 +71,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 		$scope.list = [];
 		currPage = 1;
 		if (r) { $scope.isMore = true; $scope.scrollTop(); } else $scope.loadData();
+		msg.top('joke');
 	};
 }])
 //搜索
