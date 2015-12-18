@@ -17,6 +17,7 @@ app.factory('msg', ['$rootScope', '$ionicLoading', '$ionicPopup', '$timeout', fu
 				msgObj.text(msg);
 				return false;
 			}
+			if (!msg) return false;
 			viewObj.append('<div class="top-msg {1}">{0}</div>'.format(msg, css));
 			msgObj = angular.element(document.querySelector('ion-nav-view[name="{0}"] > ion-view > .top-msg'.format(view)));
 			if (msgObj) {
