@@ -42,6 +42,10 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 
 	$scope.loadData = function () {
 		data.checkApi(JokeService.joke($scope.tid, $scope.cid, currPage), function(res) {
+			if (currPage == 1) {
+				$rootScope.maxJoke = 0;
+				$rootScope.newJokes = 0;
+			}
 			$scope.isMore = res.list.length == 10;
 			angular.forEach(res.list, function(item) {
 				if (parseInt(item.id) > $rootScope.maxJoke) $rootScope.maxJoke = parseInt(item.id) || 0;
@@ -65,8 +69,6 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 		});
 	};
 	$scope.refresh = function (r) {
-		$rootScope.maxJoke = 0;
-		$rootScope.newJokes = 0;
 		config.refresh.joke = false;
 		$scope.list = [];
 		currPage = 1;
