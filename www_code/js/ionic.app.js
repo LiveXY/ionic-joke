@@ -70,10 +70,11 @@ var app = angular.module('jokeApp', ['ionic', 'ngCordova'])
 	.state('version', { url: '/version', templateUrl: 'version.html', controller: 'versionController' });
 }])
 //启动
-.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', 'login', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util, login) {
+.run(['$ionicPlatform', '$rootScope', '$location', '$ionicHistory', '$timeout', 'init', 'msg', 'data', 'util', 'login', 'config', function($ionicPlatform, $rootScope, $location, $ionicHistory, $timeout, init, msg, data, util, login, config) {
 	$rootScope.fontSize = data.get('fontSize') || '16';
 	$rootScope.openNight = data.get('openNight') == 'true' ? true : false;
 	$rootScope.skin = $rootScope.openNight ? 'dark' : (data.get('skin') || 'assertive');
+	$rootScope.fontSizes = config.fontSizes;
 
 	//禁用系统的虚拟返回键
 	$ionicPlatform.registerBackButtonAction(function (e) {

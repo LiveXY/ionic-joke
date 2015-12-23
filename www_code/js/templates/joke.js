@@ -144,14 +144,14 @@ $templateCache.put('edit.html', '\
 		<div class="title">审核</div>\
 	</ion-header-bar>\
 	<ion-content>\
-		<div class="audit-title">内容：</div>\
-		<div class="audit-edit"><textarea type="text" ng-model="joke.text2" placeholder="请输入您的内容"></textarea></div>\
-		<div class="audit-title">标题：</div>\
-		<div class="audit-edit"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
-		<div class="audit-title">标签：</div>\
-		<div class="audit-edit"><ion-tags source="tags" ng-model="joke.tags"></ion-tags></div>\
-		<div class="audit-title">评分：{{joke.score}}</div>\
-		<div class="audit-edit item range range-{{$root.skin}}"><input type="range" ng-model="joke.score" min="1" max="100"></div>\
+		<div class="edit-title">内容：</div>\
+		<div class="edit-item item-bline"><textarea type="text" ng-model="joke.text2" placeholder="请输入您的内容"></textarea></div>\
+		<div class="edit-title">标题：</div>\
+		<div class="edit-item item-bline"><input type="text" ng-model="joke.title" placeholder="请输入标题" /></div>\
+		<div class="edit-title">标签：</div>\
+		<div class="edit-item item-bline"><ion-tags source="tags" ng-model="joke.tags"></ion-tags></div>\
+		<div class="edit-title">评分：{{joke.score}}</div>\
+		<div class="edit-item item range range-{{$root.skin}}"><input type="range" ng-model="joke.score" min="1" max="100"></div>\
 		<div class="padding"><button class="button button-block button-{{$root.skin}}" ng-click="auditPost()">提交审核</button></div>\
 	</ion-content>\
 </ion-modal-view>\

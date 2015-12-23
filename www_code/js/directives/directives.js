@@ -29,6 +29,91 @@ app.directive('imgLoaded', [
 		}
 	}
 ])
+.directive('ionSelect', ["$timeout", "$ionicPopover", "$ionicScrollDelegate",
+	function ($timeout, $ionicPopover, $ionicScrollDelegate) {
+		return {
+			restrict: 'AE',
+			replace: true,
+			scope: { source: "=", ngModel: "=", ngSave: "&" },
+			require: 'ngModel',
+			template: '\
+			<div class="item item-input item-more">\
+				<div class="item-text">{{text}}</div>\
+				<i class="ion-ios-arrow-right" style="top:25%"></i>\
+				<span class="icon {{icoClass}}" style="color:#4DCEEB;font-size:{{icoSize}}px;"></span>\
+				<label>{{title}}</label>\
+			</div>',
+			link: function(scope, element, attrs, ngModelController) {
+				var scrolling, currentItem, currentID;
+				scope.cancelText = attrs.cancelText || '取消';
+				scope.okText = attrs.okText || '确定';
+				scope.title = attrs.title || '';
+				scope.icoSize = attrs.icoSize || 35;
+				scope.icoClass = attrs.icoClass || 35;
+				scope.text = attrs.placeholder || '';
+				element.bind('click', function (e) {
+					angular.element(element).addClass('clicked');
+					$timeout(function(){ angular.element(element).removeClass('clicked'); }, 200);
+					open();
+				});
+				scope.$watch('source', function(value) { scope.data = value; });
+				scope.$watch('ngModel',function(value) {
+					currentID = value;
+					var index = currentIndex();
+					setScroll('selectHandle', index);
+				});
+				function currentIndex() {
+					var index = 0;
+					if (currentID) angular.forEach(scope.data, function(item, i) {
+						if (item.id == currentID) {
+							index = i;
+							currentItem = item;
+						}
+						if (currentItem) {
+							scope.text = currentItem.name;
+						}
+					});
+					return index;
+				}
+
+				scope.select = $ionicPopover.fromTemplateUrl('select1.html', { scope: scope }).then(function(popover) { scope.select = popover; });
+
+				function open() {
+					var index = currentIndex();
+					setScroll('selectHandle', index);
+					scope.select.show();
+				};
+				scope.close = function() { scope.select.hide(); };
+				scope.save = function() {
+					if (currentItem) {
+						ngModelController.$setViewValue(currentItem.id);
+						scope.text = currentItem.name;
+						scope.ngSave && scope.ngSave();
+					}
+					scope.close();
+				};
+				scope.selectScroll = function(handle) {
+					$timeout.cancel(scrolling);
+					var length = scope.data.length
+					var top = $ionicScrollDelegate.$getByHandle(handle).getScrollPosition().top;
+					var index = Math.round(top / 36);
+					if (index < 0) index = 0;
+					if (index > length - 1) index = length-1;
+					if (length>0 && top === index*36) currentItem = scope.data[index];
+					if (length>0 && top !== index*36) {
+						scrolling = $timeout(function () {
+							$ionicScrollDelegate.$getByHandle(handle).scrollTo(0,index*36,true);
+						}, 100);
+					}
+				}
+				function setScroll(handle, index) {
+					$ionicScrollDelegate.$getByHandle(handle).scrollTo(0,index*36,true);
+				}
+				scope.$on('$destroy', function() { scope.select.remove(); });
+			}
+		}
+	}
+])
 .directive('ionTags', ['$timeout', '$parse', function($timeout, $parse){
 	return {
 		restrict: 'AE',
