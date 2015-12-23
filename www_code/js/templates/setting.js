@@ -3,8 +3,8 @@
 
 app.run(['$templateCache', function($templateCache) {
 $templateCache.put('select1.html', '\
-<ion-popover-view class="win">\
-	<header class="bar">\
+<ion-modal-view class="select-win">\
+	<header class="bar select-bar">\
 		<button class="button button-icon" ng-click="close()">{{cancelText}}</button>\
 		<h1 class="title">{{title}}</h1>\
 		<button class="button button-icon" ng-click="save()">{{okText}}</button>\
@@ -12,21 +12,21 @@ $templateCache.put('select1.html', '\
 	<div class="select-inner">\
 		<div class="row">\
 			<div class="col">\
-				<ion-scroll delegate-handle="selectHandle" on-scroll="selectScroll(\'selectHandle\')" scrollbar-y="false">\
+				<ion-scroll delegate-handle="{{selectHandle}}" on-scroll="selectScroll()" scrollbar-y="false">\
 				<ul><li ng-repeat="item in data">{{item.name}}</li></ul>\
 				</ion-scroll>\
 			</div>\
 		</div>\
 		<div class="picker-center-highlight"></div>\
 	</div>\
-</ion-popover-view>\
+</ion-modal-view>\
 ');
 //设置
 $templateCache.put('setting.html', '\
 <ion-view class="mine" title="设置">\
 	<ion-content class="ioslist left45">\
 		<div class="list">\
-			<ion-select class="item item-input item-more" ng-model="$root.fontSize" ng-save="saveSetting(\'fontSize\', $root.fontSize)" source="$root.fontSizes" title="字体大小" ico-class="ion-ios-at-outline" ico-size="35"></ion-select>\
+			<ion-select1 ng-model="$root.fontSize" ng-save="saveSetting(\'fontSize\', $root.fontSize)" source="$root.fontSizes" title="字体大小" ico-class="ion-ios-at-outline" ico-size="35"></ion-select1>\
 			<ion-toggle ng-model="$root.openNight" ng-checked="$root.openNight" ng-change="saveSetting(\'openNight\', $root.openNight)" toggle-class="toggle-{{$root.skin}}">\
 				<span class="icon ion-ios-eye-outline" style="color:#8DD2CB;font-size:30px;"></span>\
 				<span class="title">夜间模式</span>\

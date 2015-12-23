@@ -29,8 +29,8 @@ app.directive('imgLoaded', [
 		}
 	}
 ])
-.directive('ionSelect', ["$timeout", "$ionicPopover", "$ionicScrollDelegate",
-	function ($timeout, $ionicPopover, $ionicScrollDelegate) {
+.directive('ionSelect1', ["$timeout", "$ionicModal", "$ionicScrollDelegate",
+	function ($timeout, $ionicModal, $ionicScrollDelegate) {
 		return {
 			restrict: 'AE',
 			replace: true,
@@ -39,18 +39,19 @@ app.directive('imgLoaded', [
 			template: '\
 			<div class="item item-input item-more">\
 				<div class="item-text">{{text}}</div>\
-				<i class="ion-ios-arrow-right" style="top:25%"></i>\
+				<i class="ion-ios-arrow-right" style="top:30%"></i>\
 				<span class="icon {{icoClass}}" style="color:#4DCEEB;font-size:{{icoSize}}px;"></span>\
 				<label>{{title}}</label>\
 			</div>',
 			link: function(scope, element, attrs, ngModelController) {
-				var scrolling, currentItem, currentID;
+				var scrolling, currentItem, currentID, selectModal, itemH = 36;
 				scope.cancelText = attrs.cancelText || '取消';
 				scope.okText = attrs.okText || '确定';
 				scope.title = attrs.title || '';
 				scope.icoSize = attrs.icoSize || 35;
 				scope.icoClass = attrs.icoClass || 35;
 				scope.text = attrs.placeholder || '';
+				scope.selectHandle = 'selectHandle' + attrs.source;
 				element.bind('click', function (e) {
 					angular.element(element).addClass('clicked');
 					$timeout(function(){ angular.element(element).removeClass('clicked'); }, 200);
@@ -60,56 +61,56 @@ app.directive('imgLoaded', [
 				scope.$watch('ngModel',function(value) {
 					currentID = value;
 					var index = currentIndex();
-					setScroll('selectHandle', index);
+					setScroll(scope.selectHandle, index);
 				});
 				function currentIndex() {
 					var index = 0;
 					if (currentID) angular.forEach(scope.data, function(item, i) {
-						if (item.id == currentID) {
-							index = i;
-							currentItem = item;
-						}
-						if (currentItem) {
-							scope.text = currentItem.name;
-						}
+						if (item.id == currentID) { index = i; currentItem = item; }
+						if (currentItem) scope.text = currentItem.name;
 					});
 					return index;
 				}
-
-				scope.select = $ionicPopover.fromTemplateUrl('select1.html', { scope: scope }).then(function(popover) { scope.select = popover; });
-
 				function open() {
-					var index = currentIndex();
-					setScroll('selectHandle', index);
-					scope.select.show();
+					if (selectModal) return show();
+					$ionicModal.fromTemplateUrl('select1.html', function(modal) {
+						selectModal = modal;
+						show();
+					}, { scope: scope, animation: 'slide-in-up' });
 				};
-				scope.close = function() { scope.select.hide(); };
+				function show() {
+					var index = currentIndex();
+					setScroll(scope.selectHandle, index);
+					selectModal.show();
+				}
+				scope.close = function() { selectModal.hide(); };
 				scope.save = function() {
 					if (currentItem) {
+						currentID = currentItem.id;
 						ngModelController.$setViewValue(currentItem.id);
 						scope.text = currentItem.name;
 						scope.ngSave && scope.ngSave();
 					}
 					scope.close();
 				};
-				scope.selectScroll = function(handle) {
+				scope.selectScroll = function() {
 					$timeout.cancel(scrolling);
 					var length = scope.data.length
-					var top = $ionicScrollDelegate.$getByHandle(handle).getScrollPosition().top;
-					var index = Math.round(top / 36);
+					var top = $ionicScrollDelegate.$getByHandle(scope.selectHandle).getScrollPosition().top;
+					var index = Math.round(top / itemH);
 					if (index < 0) index = 0;
 					if (index > length - 1) index = length-1;
-					if (length>0 && top === index*36) currentItem = scope.data[index];
-					if (length>0 && top !== index*36) {
+					if (length>0 && top === index*itemH) currentItem = scope.data[index];
+					if (length>0 && top !== index*itemH) {
 						scrolling = $timeout(function () {
-							$ionicScrollDelegate.$getByHandle(handle).scrollTo(0,index*36,true);
+							$ionicScrollDelegate.$getByHandle(scope.selectHandle).scrollTo(0,index*itemH,true);
 						}, 100);
 					}
 				}
 				function setScroll(handle, index) {
-					$ionicScrollDelegate.$getByHandle(handle).scrollTo(0,index*36,true);
+					$ionicScrollDelegate.$getByHandle(handle).scrollTo(0,index*itemH,true);
 				}
-				scope.$on('$destroy', function() { scope.select.remove(); });
+				scope.$on('$destroy', function() { selectModal && selectModal.remove(); });
 			}
 		}
 	}
