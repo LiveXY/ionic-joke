@@ -12,7 +12,7 @@ app.controller('tabsController', ['$location', '$scope', '$rootScope', '$interva
 	$scope.go = function(path) { refresh(); $location.path(path); };
 }])
 //笑话
-.controller('jokeController', ['$scope', '$rootScope', '$ionicPopover', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($scope, $rootScope, $ionicPopover, util, init, msg, data, config, JokeService) {
+.controller('jokeController', ['$timeout', '$scope', '$rootScope', '$ionicPopover', 'util', 'init', 'msg', 'data', 'config', 'JokeService', function($timeout, $scope, $rootScope, $ionicPopover, util, init, msg, data, config, JokeService) {
 	init.registerBase($scope);
 
 	function watchTopMessage(v, o){
