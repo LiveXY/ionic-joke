@@ -95,7 +95,7 @@ ion-list .list,.list { margin-top:-1px; }
 
 .select-win.modal {  top:inherit; bottom:0px; height:296px; min-height:296px; }
 .select-win .select-bar { background-color:#f8f8f8; }
-.modal-backdrop-bg { background-color: rgba(0,0,0,.4); }
+.modal-backdrop-bg.select-win-bg { background-color: rgba(0,0,0,.4); }
 .select-inner ion-scroll li {position: relative;top: 0;left: 0;width: 100%; height: 36px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding: 0 10px;overflow: hidden;line-height: 36px;color: #000;text-overflow: ellipsis;white-space: nowrap;-webkit-transition: 300ms;-o-transition: 300ms;transition: 300ms;text-align:center;}
 .select-inner { background-color: #ddd;height: 252px;position: relative;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;padding: 0;font-size:1.1rem;text-align: right;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 30%, white 70%, transparent 95%, transparent);-webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 30%, white 70%, transparent 95%, transparent); top:44px; }
 .select-inner ion-scroll{height: 252px;}

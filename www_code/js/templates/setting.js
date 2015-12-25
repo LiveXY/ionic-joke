@@ -3,6 +3,7 @@
 
 app.run(['$templateCache', function($templateCache) {
 $templateCache.put('select1.html', '\
+<div class="modal-backdrop-bg select-win-bg"></div>\
 <ion-modal-view class="select-win">\
 	<header class="bar select-bar">\
 		<button class="button button-icon" ng-click="close()">{{cancelText}}</button>\
