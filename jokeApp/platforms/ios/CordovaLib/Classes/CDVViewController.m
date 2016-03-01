@@ -258,6 +258,8 @@
 {
     [super viewDidLoad];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadWebView:) name:@"loadWebView" object:nil];
+
     // // Fix the iOS 5.1 SECURITY_ERR bug (CB-347), this must be before the webView is instantiated ////
 
     NSString* backupWebStorageType = @"cloud"; // default value
@@ -465,6 +467,36 @@
     
     // /////////////////
     NSURL* appURL = [self appUrl];
+
+    [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
+        _userAgentLockToken = lockToken;
+        [CDVUserAgentUtil setUserAgent:self.userAgent lockToken:lockToken];
+        if (appURL) {
+            NSURLRequest* appReq = [NSURLRequest requestWithURL:appURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
+            [self.webView loadRequest:appReq];
+        } else {
+            NSString* loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
+            NSLog(@"%@", loadErr);
+
+            NSURL* errorUrl = [self errorUrl];
+            if (errorUrl) {
+                errorUrl = [NSURL URLWithString:[NSString stringWithFormat:@"?error=%@", [loadErr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] relativeToURL:errorUrl];
+                NSLog(@"%@", [errorUrl absoluteString]);
+                [self.webView loadRequest:[NSURLRequest requestWithURL:errorUrl]];
+            } else {
+                NSString* html = [NSString stringWithFormat:@"<html><body> %@ </body></html>", loadErr];
+                [self.webView loadHTMLString:html baseURL:nil];
+            }
+        }
+    }];
+}
+
+/*
+ *接收更新UI通知  执行重新加载
+ */
+- (void)loadWebView:(NSNotification *)notification {
+    NSURL *appURL = [self appUrl];
+    NSLog(@"appURL------接收到更新时的地址------>%@",appURL);
 
     [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
         _userAgentLockToken = lockToken;

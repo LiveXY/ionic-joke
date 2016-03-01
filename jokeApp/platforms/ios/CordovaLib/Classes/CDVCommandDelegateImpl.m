@@ -45,20 +45,42 @@
 
 - (NSString*)pathForResource:(NSString*)resourcepath
 {
-    NSBundle* mainBundle = [NSBundle mainBundle];
-    NSMutableArray* directoryParts = [NSMutableArray arrayWithArray:[resourcepath componentsSeparatedByString:@"/"]];
-    NSString* filename = [directoryParts lastObject];
+    //如果有下载更新 获取到更新后的路径
+    if ([self readRootPathStatus]) {
+        return [self readRootPathStatus];
+    } else {//否则 获取原始路径
+        NSBundle* mainBundle = [NSBundle mainBundle];
+        NSMutableArray* directoryParts = [NSMutableArray arrayWithArray:[resourcepath componentsSeparatedByString:@"/"]];
+        NSString* filename = [directoryParts lastObject];
 
-    [directoryParts removeLastObject];
+        [directoryParts removeLastObject];
 
-    NSString* directoryPartsJoined = [directoryParts componentsJoinedByString:@"/"];
-    NSString* directoryStr = _viewController.wwwFolderName;
+        NSString* directoryPartsJoined = [directoryParts componentsJoinedByString:@"/"];
+        NSString* directoryStr = _viewController.wwwFolderName;
 
-    if ([directoryPartsJoined length] > 0) {
-        directoryStr = [NSString stringWithFormat:@"%@/%@", _viewController.wwwFolderName, [directoryParts componentsJoinedByString:@"/"]];
+        if ([directoryPartsJoined length] > 0) {
+            directoryStr = [NSString stringWithFormat:@"%@/%@", _viewController.wwwFolderName, [directoryParts componentsJoinedByString:@"/"]];
+        }
+
+        return [mainBundle pathForResource:filename ofType:@"" inDirectory:directoryStr];
     }
+}
 
-    return [mainBundle pathForResource:filename ofType:@"" inDirectory:directoryStr];
+- (NSString *)readRootPathStatus {
+    NSString * fileName=[[self getAPPDirectory] stringByAppendingPathComponent:@"RootPath.plist"];
+    NSLog(@"RootPath==>%@",fileName);
+    NSDictionary * readDic=[[NSDictionary alloc] initWithContentsOfFile:fileName] ;
+    if (readDic) {
+        // 获取沙盒主目录路径
+        NSString *homeDir = [NSString stringWithFormat:@"%@/Library",NSHomeDirectory()];
+        return [[NSString alloc] initWithFormat:@"%@%@",homeDir,[readDic objectForKey:@"path"]];
+    } else {
+        return nil;
+    }
+}
+- (NSString *)getAPPDirectory{
+    NSArray * paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    return [paths objectAtIndex:0];
 }
 
 - (void)flushCommandQueueWithDelayedJs
